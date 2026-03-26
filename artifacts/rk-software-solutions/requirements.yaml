@@ -1,0 +1,23 @@
+packages:
+  "framer-motion": "For premium page transitions and scroll animations"
+  "react-hook-form": "For robust contact form state management"
+  "@hookform/resolvers": "For Zod schema validation with react-hook-form"
+  "zod": "For contact form schema definition"
+  "lucide-react": "For beautiful vector icons across the application"
+
+images:
+  - path: "artifacts/rk-software-solutions/public/images/logo.png"
+    description: "Professional corporate logo for 'RK', bold navy blue circle with elegant gold letters 'RK', transparent background, clean vector style"
+    aspect_ratio: "1:1"
+  - path: "artifacts/rk-software-solutions/public/images/hero-bg.png"
+    description: "Abstract modern technology background in deep navy blue with subtle glowing gold network lines and soft geometric shapes, high end corporate feel"
+    aspect_ratio: "16:9"
+  - path: "artifacts/rk-software-solutions/public/images/pattern-bg.png"
+    description: "Subtle abstract geometric dot pattern on a very light gray background, for section backgrounds"
+    aspect_ratio: "16:9"
+
+notes:
+  - Static frontend site for an institute. No actual backend API is assumed to exist for form submissions.
+  - Contact form submissions will use a simulated mutation (delay + toast) to demonstrate functional wiring.
+  - Navigation uses Wouter.
+  - Using a custom Navy (hsl 231 73% 18%) and Gold (hsl 43 96% 56%) palette.
