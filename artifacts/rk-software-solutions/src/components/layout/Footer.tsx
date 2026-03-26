@@ -1,26 +1,34 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+function LogoAvatar() {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return <span className="text-primary font-bold text-lg">RK</span>;
+  }
+  return (
+    <img
+      src={`${import.meta.env.BASE_URL}images/logo.png`}
+      alt="RK Logo"
+      className="w-full h-full object-cover"
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground pt-16 pb-8 border-t-[8px] border-accent">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          
+
           {/* Brand Column */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden border-2 border-accent">
-                <img 
-                  src={`${import.meta.env.BASE_URL}images/logo.png`} 
-                  alt="RK Logo" 
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = '<span class="text-primary font-bold">RK</span>';
-                  }}
-                />
+                <LogoAvatar />
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl text-white">
@@ -54,12 +62,18 @@ export function Footer() {
           <div>
             <h3 className="text-xl font-display font-bold mb-6 text-white border-b-2 border-accent/50 inline-block pb-2">Quick Links</h3>
             <ul className="space-y-4">
-              {['About Us', 'Our Team', 'Placements', 'Student Reviews', 'Contact Us'].map((link) => (
-                <li key={link}>
-                  <Link href={`/${link.toLowerCase().replace(' ', '-')}`}>
+              {[
+                { label: 'Home', href: '/' },
+                { label: 'About Us', href: '/about' },
+                { label: 'Courses', href: '/courses' },
+                { label: 'Placements', href: '/placements' },
+                { label: 'Contact Us', href: '/contact' },
+              ].map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href}>
                     <span className="text-primary-foreground/80 hover:text-accent flex items-center gap-2 cursor-pointer transition-colors">
                       <ArrowRight size={14} className="text-accent" />
-                      {link}
+                      {link.label}
                     </span>
                   </Link>
                 </li>

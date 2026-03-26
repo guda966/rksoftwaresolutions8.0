@@ -3,6 +3,21 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+function NavLogoAvatar() {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return <span className="text-accent font-bold text-xl">RK</span>;
+  }
+  return (
+    <img
+      src={`${import.meta.env.BASE_URL}images/logo.png`}
+      alt="RK Logo"
+      className="w-full h-full object-cover"
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
 export function Navbar() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,16 +72,7 @@ export function Navbar() {
           <Link href="/">
             <div className="flex items-center gap-3 cursor-pointer group">
               <div className="relative w-12 h-12 flex-shrink-0 rounded-full bg-primary flex items-center justify-center text-accent font-display font-bold text-xl overflow-hidden group-hover:shadow-lg transition-all duration-300">
-                <img 
-                  src={`${import.meta.env.BASE_URL}images/logo.png`} 
-                  alt="RK Logo" 
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // Fallback if image fails to load
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = 'RK';
-                  }}
-                />
+                <NavLogoAvatar />
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl leading-tight text-primary uppercase tracking-wide">

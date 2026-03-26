@@ -1,13 +1,76 @@
-import { Target, Lightbulb, Users, Award, BookOpen, Clock } from "lucide-react";
+import { Target, Lightbulb, Users, Award, BookOpen, Clock, Linkedin, Mail } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+interface TeamMember {
+  name: string;
+  role: string;
+  experience: string;
+  expertise: string[];
+  initials: string;
+  bgColor: string;
+}
+
+const team: TeamMember[] = [
+  {
+    name: "Ravi Kumar",
+    role: "Founder & Lead Trainer — Java & Full Stack",
+    experience: "12+ Years",
+    expertise: ["Java", "Spring Boot", "Microservices"],
+    initials: "RK",
+    bgColor: "bg-blue-600",
+  },
+  {
+    name: "Sunitha Reddy",
+    role: "Senior Trainer — Python & Data Science",
+    experience: "9+ Years",
+    expertise: ["Python", "Machine Learning", "TensorFlow"],
+    initials: "SR",
+    bgColor: "bg-purple-600",
+  },
+  {
+    name: "Anil Sharma",
+    role: "Trainer — Software Testing & Automation",
+    experience: "8+ Years",
+    expertise: ["Selenium", "TestNG", "API Testing"],
+    initials: "AS",
+    bgColor: "bg-green-600",
+  },
+  {
+    name: "Meena Patel",
+    role: "Trainer — Digital Marketing & Non-IT",
+    experience: "7+ Years",
+    expertise: ["SEO/SEM", "Google Ads", "Social Media"],
+    initials: "MP",
+    bgColor: "bg-amber-600",
+  },
+  {
+    name: "Kiran Babu",
+    role: "Placement Head & Career Counselor",
+    experience: "10+ Years",
+    expertise: ["Career Guidance", "Corporate Relations", "Interview Coaching"],
+    initials: "KB",
+    bgColor: "bg-red-600",
+  },
+  {
+    name: "Divya Rao",
+    role: "Trainer — MERN Stack & UI/UX",
+    experience: "6+ Years",
+    expertise: ["React", "Node.js", "Figma"],
+    initials: "DR",
+    bgColor: "bg-teal-600",
+  },
+];
 
 export default function About() {
   return (
     <div className="w-full">
       {/* Page Header */}
       <section className="bg-primary text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop')] bg-cover bg-center mix-blend-overlay"></div>
+        <div className="absolute inset-0 opacity-10 bg-cover bg-center mix-blend-overlay"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop')" }}
+        ></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <FadeIn>
             <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 text-white">About RK Software Solutions</h1>
@@ -23,11 +86,10 @@ export default function About() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <FadeIn direction="left">
-              {/* stock image of diverse students coding */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=1000&fit=crop" 
-                  alt="Students learning" 
+                <img
+                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=1000&fit=crop"
+                  alt="Students learning at RK Software Solutions"
                   className="w-full h-full object-cover aspect-[4/5]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
@@ -71,6 +133,12 @@ export default function About() {
       {/* Mission & Vision */}
       <section className="py-24 bg-secondary/30 relative">
         <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <FadeIn>
+              <h2 className="text-4xl font-display font-bold mb-4">Mission & Vision</h2>
+              <p className="text-muted-foreground text-lg">The purpose and direction that guide everything we do.</p>
+            </FadeIn>
+          </div>
           <div className="grid md:grid-cols-2 gap-8">
             <FadeIn delay={0.1}>
               <Card className="h-full bg-white border-none shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
@@ -90,9 +158,7 @@ export default function About() {
             <FadeIn delay={0.2}>
               <Card className="h-full bg-primary text-primary-foreground border-none shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden relative">
                 <div className="h-2 bg-accent w-full absolute top-0 left-0"></div>
-                {/* Decorative background element */}
                 <div className="absolute -right-20 -bottom-20 w-64 h-64 border-[30px] border-white/5 rounded-full pointer-events-none"></div>
-                
                 <CardContent className="p-10 relative z-10">
                   <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 text-accent">
                     <Lightbulb size={32} />
@@ -134,6 +200,70 @@ export default function About() {
                   <h3 className="text-xl font-bold mb-3">{value.title}</h3>
                   <p className="text-muted-foreground">{value.desc}</p>
                 </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team / Faculty Section */}
+      <section className="py-24 bg-secondary/20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <FadeIn>
+              <h2 className="text-4xl font-display font-bold mb-4">Meet Our Expert Faculty</h2>
+              <p className="text-lg text-muted-foreground">
+                Our trainers are working professionals with deep industry experience who bring real-world knowledge into every classroom.
+              </p>
+            </FadeIn>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {team.map((member, i) => (
+              <FadeIn key={i} delay={i * 0.1} direction="up">
+                <Card className="h-full border-none shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+                  <CardContent className="p-0">
+                    {/* Top banner with initials avatar */}
+                    <div className={`${member.bgColor} p-8 flex flex-col items-center text-white relative overflow-hidden`}>
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                      <div className="w-20 h-20 rounded-full bg-white/20 border-4 border-white/50 flex items-center justify-center text-3xl font-bold mb-4 z-10">
+                        {member.initials}
+                      </div>
+                      <h3 className="text-xl font-bold text-center">{member.name}</h3>
+                      <p className="text-white/80 text-sm text-center mt-1">{member.role}</p>
+                    </div>
+
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Award size={16} className="text-accent" />
+                        <span className="text-sm font-semibold text-muted-foreground">{member.experience} Experience</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {member.expertise.map((skill) => (
+                          <Badge key={skill} variant="secondary" className="bg-secondary text-secondary-foreground font-medium">
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                      <div className="flex gap-3 mt-5">
+                        <a
+                          href="#"
+                          className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors text-sm font-medium text-muted-foreground hover:text-primary"
+                          aria-label={`LinkedIn profile of ${member.name}`}
+                        >
+                          <Linkedin size={15} /> LinkedIn
+                        </a>
+                        <a
+                          href="#"
+                          className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors text-sm font-medium text-muted-foreground hover:text-accent"
+                          aria-label={`Email ${member.name}`}
+                        >
+                          <Mail size={15} /> Email
+                        </a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </FadeIn>
             ))}
           </div>

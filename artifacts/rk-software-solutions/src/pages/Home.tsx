@@ -1,22 +1,214 @@
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { ArrowRight, CheckCircle2, Star, Users, Briefcase, Award, TrendingUp, Code2, MonitorPlay, Bug, Target, Database } from "lucide-react";
+import { ArrowRight, CheckCircle2, Star, Users, Briefcase, Award, TrendingUp, Code2, MonitorPlay, Bug, Target, Database, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/ui/FadeIn";
+
+interface StatItem {
+  icon: React.ComponentType<{ size: number }>;
+  target: number;
+  suffix: string;
+  label: string;
+}
+
+interface Testimonial {
+  name: string;
+  course: string;
+  company: string;
+  rating: number;
+  quote: string;
+  initials: string;
+}
+
+function AnimatedCounter({ target, suffix, duration = 2000 }: { target: number; suffix: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const startTime = performance.now();
+          const animate = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(eased * target));
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Priya Sharma",
+    course: "Full Stack Development",
+    company: "Infosys",
+    rating: 5,
+    quote: "RK Software Solutions gave me everything I needed to land my dream job. The live projects and mock interviews were incredibly realistic. I cracked Infosys in my very first attempt!",
+    initials: "PS",
+  },
+  {
+    name: "Rahul Kumar",
+    course: "Java Programming",
+    company: "TCS",
+    rating: 5,
+    quote: "The trainers here are actual industry professionals who explain real-world concepts very clearly. Within 3 months of completing Java training, I got placed at TCS with a great package.",
+    initials: "RK",
+  },
+  {
+    name: "Ananya Reddy",
+    course: "Software Testing",
+    company: "Wipro",
+    rating: 5,
+    quote: "I had zero programming background but the structured approach at RK made it so easy to learn. Their placement team is amazing — they prepare you for every round of the interview.",
+    initials: "AR",
+  },
+  {
+    name: "Srinivas Rao",
+    course: "Data Science & AI",
+    company: "Capgemini",
+    rating: 5,
+    quote: "The Data Science curriculum here is miles ahead of any online platform. The hands-on experience with real datasets and industry mentors really made the difference in my career.",
+    initials: "SR",
+  },
+  {
+    name: "Deepika Nair",
+    course: "Digital Marketing",
+    company: "Amazon",
+    rating: 5,
+    quote: "I was skeptical about a career switch to Digital Marketing but RK Software Solutions made it seamless. From SEO to Google Ads, every module was practical and job-oriented.",
+    initials: "DN",
+  },
+];
+
+function TestimonialsCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const goTo = (index: number) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrent((index + testimonials.length) % testimonials.length);
+      setIsAnimating(false);
+    }, 200);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goTo(current + 1);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [current]);
+
+  const prev = (current - 1 + testimonials.length) % testimonials.length;
+  const next = (current + 1) % testimonials.length;
+
+  return (
+    <div className="relative">
+      {/* Main Testimonial Card */}
+      <div
+        className={`transition-opacity duration-200 ${isAnimating ? "opacity-0" : "opacity-100"}`}
+      >
+        <Card className="max-w-3xl mx-auto border-none shadow-2xl bg-white relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-2 h-full bg-accent"></div>
+          <CardContent className="p-10 md:p-14">
+            <Quote size={48} className="text-accent/20 mb-6" />
+            <p className="text-xl md:text-2xl text-foreground leading-relaxed italic mb-10 font-light">
+              "{testimonials[current].quote}"
+            </p>
+            <div className="flex items-center gap-5">
+              <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                {testimonials[current].initials}
+              </div>
+              <div>
+                <p className="text-xl font-bold text-primary">{testimonials[current].name}</p>
+                <p className="text-muted-foreground">{testimonials[current].course}</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <Badge className="bg-accent/10 text-accent border-accent/30 text-xs font-semibold">
+                    Placed at {testimonials[current].company}
+                  </Badge>
+                  <div className="flex">
+                    {Array.from({ length: testimonials[current].rating }).map((_, i) => (
+                      <Star key={i} size={14} className="text-accent fill-accent" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex items-center justify-center gap-6 mt-10">
+        <button
+          onClick={() => goTo(prev)}
+          className="w-12 h-12 rounded-full border-2 border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all"
+          aria-label="Previous"
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        <div className="flex gap-2">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === current ? "w-8 h-3 bg-primary" : "w-3 h-3 bg-primary/20 hover:bg-primary/40"
+              }`}
+              aria-label={`Go to testimonial ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={() => goTo(next)}
+          className="w-12 h-12 rounded-full border-2 border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all"
+          aria-label="Next"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const stats: StatItem[] = [
+  { icon: Users, target: 5000, suffix: "+", label: "Students Trained" },
+  { icon: Briefcase, target: 200, suffix: "+", label: "Partner Companies" },
+  { icon: TrendingUp, target: 95, suffix: "%", label: "Placement Rate" },
+  { icon: Award, target: 10, suffix: "+", label: "Years Experience" },
+];
 
 export default function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-primary">
-        {/* Background Image / Pattern */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-primary/90 mix-blend-multiply z-10" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-transparent z-10" />
-          <img 
-            src={`${import.meta.env.BASE_URL}images/hero-bg.png`} 
-            alt="Technology Background" 
+          <img
+            src={`${import.meta.env.BASE_URL}images/hero-bg.png`}
+            alt="Technology Background"
             className="w-full h-full object-cover"
           />
         </div>
@@ -28,23 +220,24 @@ export default function Home() {
                 WAY TO SUCCESS
               </Badge>
             </FadeIn>
-            
+
             <FadeIn direction="up" delay={0.1}>
               <h1 className="text-5xl md:text-7xl font-display font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
-                Your Gateway to a <span className="text-accent relative inline-block">
+                Your Gateway to a{" "}
+                <span className="text-accent relative inline-block">
                   Successful
-                  {/* Decorative underline */}
                   <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/30 -z-10 rounded-full"></span>
-                </span> IT Career
+                </span>{" "}
+                IT Career
               </h1>
             </FadeIn>
-            
+
             <FadeIn direction="up" delay={0.2}>
               <p className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed font-light max-w-2xl">
                 India's premier software training and placement institute. Master in-demand skills with industry experts and secure your dream job.
               </p>
             </FadeIn>
-            
+
             <FadeIn direction="up" delay={0.3} className="flex flex-wrap gap-4">
               <Link href="/courses">
                 <Button size="lg" className="bg-accent text-primary hover:bg-accent/90 text-lg px-8 h-14 font-bold shadow-xl shadow-accent/20 border-none">
@@ -59,32 +252,28 @@ export default function Home() {
             </FadeIn>
           </div>
         </div>
-        
-        {/* Decorative shape */}
+
         <div className="absolute -bottom-1 left-0 right-0 w-full overflow-hidden leading-none text-background z-20">
-          <svg className="block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <svg className="block w-full h-[50px] md:h-[100px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="currentColor"></path>
           </svg>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section — Animated Counters */}
       <section className="py-12 bg-background relative z-30 -mt-10 md:-mt-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            {[
-              { icon: Users, count: "5000+", label: "Students Trained" },
-              { icon: Briefcase, count: "200+", label: "Partner Companies" },
-              { icon: TrendingUp, count: "95%", label: "Placement Rate" },
-              { icon: Award, count: "10+", label: "Years Experience" },
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <FadeIn key={index} delay={index * 0.1} direction="up">
                 <Card className="border-none shadow-xl shadow-primary/5 bg-white hover:-translate-y-2 transition-transform duration-300">
                   <CardContent className="p-6 md:p-8 flex flex-col items-center text-center">
                     <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-4 text-accent">
                       <stat.icon size={32} />
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-display font-bold text-primary mb-2">{stat.count}</h3>
+                    <h3 className="text-3xl md:text-4xl font-display font-bold text-primary mb-2">
+                      <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                    </h3>
                     <p className="text-muted-foreground font-medium">{stat.label}</p>
                   </CardContent>
                 </Card>
@@ -96,12 +285,17 @@ export default function Home() {
 
       {/* Why Choose Us */}
       <section className="py-24 bg-secondary/50 relative">
-        <div className="absolute inset-0 opacity-[0.03] z-0" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/pattern-bg.png)` }}></div>
+        <div
+          className="absolute inset-0 opacity-[0.03] z-0"
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/pattern-bg.png)` }}
+        ></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <FadeIn>
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Why Choose RK Software?</h2>
-              <p className="text-lg text-muted-foreground">We provide a comprehensive learning ecosystem designed to transform beginners into industry-ready professionals.</p>
+              <p className="text-lg text-muted-foreground">
+                We provide a comprehensive learning ecosystem designed to transform beginners into industry-ready professionals.
+              </p>
             </FadeIn>
           </div>
 
@@ -159,23 +353,17 @@ export default function Home() {
                 <Card className="h-full border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-300 overflow-hidden group">
                   <CardContent className="p-0">
                     <div className="p-8 relative">
-                      {/* Decorative background circle */}
                       <div className={`absolute top-0 right-0 w-32 h-32 ${course.color} rounded-full opacity-5 -translate-y-1/2 translate-x-1/4 group-hover:scale-150 transition-transform duration-700`}></div>
-                      
-                      <div className={`w-14 h-14 rounded-2xl ${course.color}/10 flex items-center justify-center mb-6 text-${course.color.replace('bg-', '')}`}>
+                      <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6 text-primary">
                         <course.icon size={28} />
                       </div>
-                      
                       <div className="flex justify-between items-start mb-4">
                         <h3 className="text-2xl font-bold font-display leading-tight">{course.title}</h3>
                       </div>
-                      
                       <Badge variant="secondary" className="mb-4 bg-secondary text-secondary-foreground font-medium">
                         {course.duration}
                       </Badge>
-                      
                       <p className="text-muted-foreground mb-8">{course.desc}</p>
-                      
                       <Link href="/contact">
                         <Button className="w-full bg-primary/5 text-primary hover:bg-primary hover:text-white border-none shadow-none font-semibold group-hover:bg-primary group-hover:text-white transition-colors">
                           Enquire Now
@@ -190,12 +378,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Carousel */}
+      <section className="py-24 bg-secondary/30">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <FadeIn>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Student Success Stories</h2>
+              <p className="text-lg text-muted-foreground">
+                Hear from our alumni who transformed their careers with RK Software Solutions.
+              </p>
+            </FadeIn>
+          </div>
+          <FadeIn>
+            <TestimonialsCarousel />
+          </FadeIn>
+        </div>
+      </section>
+
       {/* CTA Banner */}
       <section className="py-20 bg-primary relative overflow-hidden">
-        {/* Abstract circles */}
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl -translate-y-1/2"></div>
         <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -translate-y-1/2"></div>
-        
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Start Your Success Journey Today</h2>
