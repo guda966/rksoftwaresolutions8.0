@@ -1,0 +1,5 @@
+{
+  "outputDirectory": "artifacts/rk-software-solutions/dist/public",
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install"
+}
