@@ -1,138 +1,286 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Trophy, Star, Building2, Quote, CheckCircle2,
+  Trophy, Star, Building2, CheckCircle2,
   ArrowRight, Briefcase, Users, TrendingUp, Award,
-  AlertCircle, Phone
+  AlertCircle, Phone, BadgeCheck, Quote
 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
+/* ─────────────────────────────────────────── */
+/* DATA                                         */
+/* ─────────────────────────────────────────── */
+
 interface Company {
   name: string;
-  abbr: string;
-  color: string;
-  text: string;
+  short: string;          // ticker abbreviation
+  brand: string;          // brand hex
+  sector: string;
 }
 
 const companies: Company[] = [
-  { name: "TCS", abbr: "TCS", color: "#003087", text: "#ffffff" },
-  { name: "Infosys", abbr: "INFY", color: "#007CC2", text: "#ffffff" },
-  { name: "Wipro", abbr: "WIPRO", color: "#341062", text: "#ffffff" },
-  { name: "HCL Tech", abbr: "HCL", color: "#0074B7", text: "#ffffff" },
-  { name: "Capgemini", abbr: "CAP", color: "#0070AD", text: "#ffffff" },
-  { name: "Tech Mahindra", abbr: "TECH-M", color: "#d11010", text: "#ffffff" },
-  { name: "Cognizant", abbr: "CTG", color: "#1279BB", text: "#ffffff" },
-  { name: "Accenture", abbr: "ACN", color: "#A100FF", text: "#ffffff" },
-  { name: "IBM", abbr: "IBM", color: "#1F70C1", text: "#ffffff" },
-  { name: "Oracle", abbr: "ORCL", color: "#F80000", text: "#ffffff" },
-  { name: "Amazon", abbr: "AMZN", color: "#FF9900", text: "#131A22" },
-  { name: "Microsoft", abbr: "MSFT", color: "#00A4EF", text: "#ffffff" },
-  { name: "Flipkart", abbr: "FK", color: "#2874F0", text: "#ffffff" },
-  { name: "Deloitte", abbr: "DTT", color: "#86BC25", text: "#ffffff" },
-  { name: "Mphasis", abbr: "MPH", color: "#CC2233", text: "#ffffff" },
-  { name: "Hexaware", abbr: "HEX", color: "#E1261C", text: "#ffffff" },
-  { name: "Mindtree", abbr: "MTCL", color: "#007DB8", text: "#ffffff" },
-  { name: "Paytm", abbr: "PAYTM", color: "#00B9F1", text: "#ffffff" },
-  { name: "Zomato", abbr: "ZMT", color: "#E23744", text: "#ffffff" },
-  { name: "Swiggy", abbr: "SWG", color: "#FC8019", text: "#ffffff" },
+  { name: "Tata Consultancy Services", short: "TCS",        brand: "#003087", sector: "IT Services"    },
+  { name: "Infosys",                   short: "INFOSYS",    brand: "#007CC2", sector: "IT Services"    },
+  { name: "Wipro",                     short: "WIPRO",      brand: "#341062", sector: "IT & Consulting" },
+  { name: "HCL Technologies",          short: "HCL",        brand: "#0074B7", sector: "Technology"     },
+  { name: "Capgemini",                 short: "Capgemini",  brand: "#0070AD", sector: "Consulting"     },
+  { name: "Tech Mahindra",             short: "Tech-M",     brand: "#C4122F", sector: "IT Services"    },
+  { name: "Cognizant",                 short: "Cognizant",  brand: "#1279BB", sector: "Technology"     },
+  { name: "Accenture",                 short: "Accenture",  brand: "#A100FF", sector: "Consulting"     },
+  { name: "IBM",                       short: "IBM",        brand: "#1F70C1", sector: "Enterprise IT"  },
+  { name: "Oracle",                    short: "Oracle",     brand: "#F80000", sector: "Enterprise SW"  },
+  { name: "Amazon",                    short: "Amazon",     brand: "#FF9900", sector: "E-Commerce"     },
+  { name: "Microsoft",                 short: "Microsoft",  brand: "#00A4EF", sector: "Cloud & SW"     },
+  { name: "Flipkart",                  short: "Flipkart",   brand: "#2874F0", sector: "E-Commerce"     },
+  { name: "Deloitte",                  short: "Deloitte",   brand: "#86BC25", sector: "Consulting"     },
+  { name: "Mphasis",                   short: "Mphasis",    brand: "#CC2233", sector: "IT Services"    },
+  { name: "Hexaware",                  short: "Hexaware",   brand: "#E1261C", sector: "Technology"     },
+  { name: "Mindtree",                  short: "Mindtree",   brand: "#007DB8", sector: "IT Services"    },
+  { name: "Paytm",                     short: "Paytm",      brand: "#00B9F1", sector: "FinTech"        },
+  { name: "Zomato",                    short: "Zomato",     brand: "#E23744", sector: "Food Tech"      },
+  { name: "Swiggy",                    short: "Swiggy",     brand: "#FC8019", sector: "Food Tech"      },
 ];
 
-const testimonials = [
+interface Testimonial {
+  name: string;
+  course: string;
+  company: string;
+  brand: string;
+  package: string;
+  salary: string;
+  quote: string;
+  initials: string;
+  gradient: string;
+  experience: string;
+}
+
+const testimonials: Testimonial[] = [
   {
     name: "Rahul Kumar",
     course: "Full Stack Development",
     company: "TCS",
-    companyColor: "#003087",
+    brand: "#003087",
     package: "4.5 LPA",
-    quote: "RK Software Solutions changed my life. The real-time projects and mock interviews gave me the confidence to clear the TCS interview in my first attempt.",
+    salary: "₹37,500 / month",
+    quote: "RK Software Solutions changed my life. The real-time projects and mock interviews gave me the confidence to clear the TCS interview in my very first attempt. The trainers are truly industry veterans.",
     initials: "RK",
     gradient: "from-blue-500 to-blue-700",
+    experience: "Fresher → TCS in 3 months",
   },
   {
     name: "Priya Sharma",
-    course: "Data Science",
+    course: "Data Science & ML",
     company: "Accenture",
-    companyColor: "#A100FF",
+    brand: "#A100FF",
     package: "6.0 LPA",
-    quote: "The trainers here are exceptional. They don't just teach theory; they show you how things work in the actual industry. Best decision of my career.",
+    salary: "₹50,000 / month",
+    quote: "The trainers here are exceptional. They don't just teach theory — they walk you through real industry scenarios. Best career decision I've ever made. Grateful to the entire team.",
     initials: "PS",
     gradient: "from-purple-500 to-purple-700",
+    experience: "Career switch from Banking",
   },
   {
     name: "Mohammed Ali",
-    course: "Java Programming",
+    course: "Java Development",
     company: "Infosys",
-    companyColor: "#007CC2",
+    brand: "#007CC2",
     package: "4.0 LPA",
-    quote: "I came from a non-IT background. The step-by-step approach and dedicated placement cell helped me transition smoothly into software development.",
+    salary: "₹33,333 / month",
+    quote: "I came from a non-IT background. The step-by-step approach and dedicated placement cell helped me transition smoothly into software development. Couldn't have done it alone.",
     initials: "MA",
     gradient: "from-emerald-500 to-emerald-700",
+    experience: "Non-IT background → IT",
   },
   {
     name: "Sneha Reddy",
     course: "Software Testing",
     company: "Cognizant",
-    companyColor: "#1279BB",
+    brand: "#1279BB",
     package: "3.8 LPA",
-    quote: "100% placement assistance is not just a marketing gimmick here. They literally supported me until I got the offer letter.",
+    salary: "₹31,666 / month",
+    quote: "100% placement assistance is not a marketing gimmick here. They literally kept following up with me, preparing me, until I received my final offer letter. Truly dedicated staff.",
     initials: "SR",
     gradient: "from-pink-500 to-pink-700",
+    experience: "Placed within 45 days",
   },
   {
     name: "Vikram Singh",
     course: "Python Development",
     company: "Wipro",
-    companyColor: "#341062",
+    brand: "#341062",
     package: "4.2 LPA",
-    quote: "The curriculum is perfectly aligned with what product companies are looking for. The hands-on coding sessions were incredibly helpful.",
+    salary: "₹35,000 / month",
+    quote: "The curriculum is perfectly aligned with what product companies are looking for. Hands-on sessions and weekly assignments kept me sharp. The mock tests were exactly like real interviews.",
     initials: "VS",
     gradient: "from-amber-500 to-amber-700",
+    experience: "2nd attempt success",
   },
   {
     name: "Anjali Desai",
     course: "MERN Stack",
     company: "Tech Mahindra",
-    companyColor: "#d11010",
+    brand: "#C4122F",
     package: "5.5 LPA",
-    quote: "Building full-stack apps from scratch during the course made the technical interview round a breeze. Highly recommended!",
+    salary: "₹45,833 / month",
+    quote: "Building full-stack apps from scratch during the course made the technical interview round a breeze. I got an offer 2 weeks after completing the program. Highly recommended!",
     initials: "AD",
     gradient: "from-indigo-500 to-indigo-700",
+    experience: "Got offer in 2 weeks",
   },
 ];
 
 const placementSteps = [
-  { icon: Award, title: "Resume Building", desc: "Professional resume crafted by our HR experts to stand out from the crowd." },
-  { icon: Users, title: "Mock Interviews", desc: "Multiple rounds of technical and HR mock interviews with expert feedback." },
-  { icon: Briefcase, title: "Job Referrals", desc: "Direct referrals to 200+ partner companies actively hiring our graduates." },
-  { icon: TrendingUp, title: "Offer & Joining", desc: "Full support from offer letter negotiation to first-day onboarding." },
+  { icon: Award,     title: "Resume Building",  desc: "ATS-optimised resume crafted by our HR experts to stand out." },
+  { icon: Users,     title: "Mock Interviews",   desc: "Technical + HR rounds simulated with real interview panels."  },
+  { icon: Briefcase, title: "Job Referrals",     desc: "Direct referrals to 200+ hiring partners actively hiring."    },
+  { icon: TrendingUp,title: "Offer & Joining",   desc: "Full support from offer negotiation to day-one onboarding."   },
 ];
+
+/* ─────────────────────────────────────────── */
+/* FLIP CARD COMPONENT                          */
+/* ─────────────────────────────────────────── */
+
+function FlipCard({ student }: { student: Testimonial }) {
+  const [flipped, setFlipped] = useState(false);
+
+  return (
+    <div
+      className="flip-card h-80 cursor-pointer"
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+      onClick={() => setFlipped(f => !f)}
+      aria-label={`Testimonial from ${student.name}`}
+    >
+      <div className={`flip-inner ${flipped ? "flipped" : ""}`}>
+
+        {/* ── FRONT ── */}
+        <div className="flip-face flip-front rounded-2xl overflow-hidden shadow-lg bg-white">
+          <div className={`h-1.5 w-full bg-gradient-to-r ${student.gradient}`} />
+          <div className="p-6 flex flex-col h-full">
+            {/* Avatar + Name */}
+            <div className="flex items-center gap-4 mb-4">
+              <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${student.gradient} flex items-center justify-center text-white font-bold text-xl shadow-md flex-shrink-0`}>
+                {student.initials}
+              </div>
+              <div>
+                <h4 className="font-bold text-base text-primary leading-tight">{student.name}</h4>
+                <p className="text-xs text-muted-foreground">{student.course}</p>
+                <div className="flex gap-0.5 text-accent mt-1">
+                  {[1,2,3,4,5].map(s => <Star key={s} size={11} fill="currentColor" />)}
+                </div>
+              </div>
+            </div>
+
+            {/* Quote preview */}
+            <div className="relative flex-1">
+              <Quote className="absolute -top-1 -left-1 text-accent/15" size={40} />
+              <p className="text-sm text-muted-foreground italic leading-relaxed pl-6 line-clamp-4">
+                "{student.quote}"
+              </p>
+            </div>
+
+            {/* Placed at */}
+            <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
+              <div className="flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: student.brand }} />
+                <span className="text-sm font-bold text-primary">{student.company}</span>
+              </div>
+              <span className="text-xs text-muted-foreground italic">Hover to flip →</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ── BACK ── */}
+        <div
+          className="flip-face flip-back rounded-2xl overflow-hidden shadow-xl"
+          style={{ backgroundColor: student.brand }}
+        >
+          <div className="p-6 flex flex-col h-full text-white">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest opacity-70">Placed at</p>
+                <h3 className="text-2xl font-display font-extrabold">{student.company}</h3>
+              </div>
+              <BadgeCheck size={32} className="opacity-80" />
+            </div>
+
+            {/* Full quote */}
+            <p className="text-sm leading-relaxed opacity-90 italic flex-1">
+              "{student.quote}"
+            </p>
+
+            {/* Details */}
+            <div className="mt-4 pt-4 border-t border-white/20 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs opacity-70">Package</span>
+                <span className="font-bold text-base">{student.package}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs opacity-70">Monthly Take-Home</span>
+                <span className="font-semibold text-sm">{student.salary}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs opacity-70">Journey</span>
+                <span className="font-semibold text-xs opacity-90">{student.experience}</span>
+              </div>
+              <div className="flex items-center gap-1.5 pt-1">
+                <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${student.gradient} flex items-center justify-center text-white font-bold text-xs`}>
+                  {student.initials}
+                </div>
+                <span className="font-bold text-sm">{student.name}</span>
+                <span className="opacity-60 text-xs">· {student.course}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────── */
+/* COMPANY LOGO CARD                            */
+/* ─────────────────────────────────────────── */
 
 function CompanyCard({ company }: { company: Company }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.06, y: -5 }}
+      whileHover={{ scale: 1.05, y: -4 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className="flex-shrink-0 w-44 h-20 rounded-2xl flex flex-col items-center justify-center gap-1 px-4 shadow-sm hover:shadow-xl transition-shadow cursor-default border border-white/20"
-      style={{ backgroundColor: company.color }}
+      className="flex-shrink-0 w-52 h-20 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-shadow cursor-default flex items-center px-4 gap-3 group"
     >
-      <span
-        className="font-display font-extrabold text-lg leading-none tracking-wider"
-        style={{ color: company.text }}
-      >
-        {company.abbr}
-      </span>
-      <span
-        className="text-[10px] font-medium tracking-widest uppercase opacity-75 leading-none"
-        style={{ color: company.text }}
-      >
-        {company.name}
-      </span>
+      {/* Brand colour bar on left */}
+      <div
+        className="w-1 h-10 rounded-full flex-shrink-0"
+        style={{ backgroundColor: company.brand }}
+      />
+      <div className="flex flex-col min-w-0">
+        <span
+          className="font-display font-extrabold text-base leading-tight tracking-tight truncate"
+          style={{ color: company.brand }}
+        >
+          {company.short}
+        </span>
+        <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest truncate">
+          {company.sector}
+        </span>
+        <span className="text-[10px] text-gray-400 truncate leading-tight">{company.name}</span>
+      </div>
+      <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+        <BadgeCheck size={16} style={{ color: company.brand }} />
+      </div>
     </motion.div>
   );
 }
+
+/* ─────────────────────────────────────────── */
+/* LOGO MARQUEE                                 */
+/* ─────────────────────────────────────────── */
 
 function LogoMarquee() {
   const row1 = [...companies.slice(0, 10), ...companies.slice(0, 10)];
@@ -153,8 +301,7 @@ function LogoMarquee() {
         </FadeIn>
       </div>
 
-      {/* Row 1 — scrolls left */}
-      <div className="relative mb-5">
+      <div className="relative mb-4">
         <div className="flex gap-4 logo-track-left">
           {row1.map((c, i) => <CompanyCard key={`r1-${i}`} company={c} />)}
         </div>
@@ -162,7 +309,6 @@ function LogoMarquee() {
         <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
       </div>
 
-      {/* Row 2 — scrolls right */}
       <div className="relative">
         <div className="flex gap-4 logo-track-right">
           {row2.map((c, i) => <CompanyCard key={`r2-${i}`} company={c} />)}
@@ -174,6 +320,10 @@ function LogoMarquee() {
   );
 }
 
+/* ─────────────────────────────────────────── */
+/* PAGE                                         */
+/* ─────────────────────────────────────────── */
+
 export default function Placements() {
   return (
     <div className="w-full bg-background min-h-screen">
@@ -181,31 +331,21 @@ export default function Placements() {
       {/* Hero */}
       <section className="bg-primary text-white py-28 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1556761175-5973dc0f32d7?w=1920&h=1080&fit=crop')] bg-cover bg-center" />
-        <motion.div
-          className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-accent/10 blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-white/5 blur-3xl"
-          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
+        <motion.div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-accent/10 blur-3xl"
+          animate={{ scale:[1,1.2,1], opacity:[0.3,0.6,0.3] }} transition={{ duration:6, repeat:Infinity }} />
+        <motion.div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-white/5 blur-3xl"
+          animate={{ scale:[1,1.3,1], opacity:[0.2,0.5,0.2] }} transition={{ duration:8, repeat:Infinity, delay:2 }} />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <FadeIn>
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-5 py-2.5 rounded-full mb-8"
-            >
+            <motion.div initial={{ scale:0 }} animate={{ scale:1 }}
+              transition={{ type:"spring", stiffness:200, delay:0.2 }}
+              className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-5 py-2.5 rounded-full mb-8">
               <Trophy size={18} />
               <span className="font-semibold text-sm">Proven Placement Record Since 2015</span>
             </motion.div>
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 text-white leading-tight">
-              Your Success is<br />
-              <span className="text-accent">Our Mission</span>
+              Your Success is<br /><span className="text-accent">Our Mission</span>
             </h1>
             <p className="text-xl text-white/80 max-w-3xl mx-auto font-light mb-10">
               We don't just train you — we walk with you until you land your dream job.
@@ -232,19 +372,14 @@ export default function Placements() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-primary text-center">
             {[
-              { value: "95%", label: "Placement Rate", icon: TrendingUp },
-              { value: "5000+", label: "Students Placed", icon: Users },
-              { value: "200+", label: "Hiring Partners", icon: Building2 },
-              { value: "3.5 LPA", label: "Avg. Package", icon: Briefcase },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="flex flex-col items-center"
-              >
+              { value:"95%",     label:"Placement Rate",  icon:TrendingUp },
+              { value:"5000+",   label:"Students Placed", icon:Users      },
+              { value:"200+",    label:"Hiring Partners", icon:Building2  },
+              { value:"3.5 LPA", label:"Avg. Package",    icon:Briefcase  },
+            ].map((stat,i) => (
+              <motion.div key={i} initial={{ opacity:0, y:20 }}
+                whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
+                transition={{ delay:i*0.1 }} className="flex flex-col items-center">
                 <stat.icon size={24} className="mb-2 opacity-70" />
                 <span className="text-4xl md:text-5xl font-extrabold font-display">{stat.value}</span>
                 <span className="font-semibold uppercase tracking-wider text-sm mt-1 opacity-80">{stat.label}</span>
@@ -260,26 +395,21 @@ export default function Placements() {
           <FadeIn className="text-center mb-14">
             <h2 className="text-4xl font-display font-bold mb-4">How We Get You Placed</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our structured 4-step placement process ensures you're always one step ahead.
+              Our structured 4-step process ensures you're always one step ahead.
             </p>
           </FadeIn>
           <div className="grid md:grid-cols-4 gap-6 relative">
             <div className="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-accent/20 via-accent to-accent/20 z-0" />
-            {placementSteps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                whileHover={{ y: -8 }}
-                className="relative z-10 flex flex-col items-center text-center bg-white rounded-2xl p-7 shadow-lg border border-border"
-              >
+            {placementSteps.map((step,i) => (
+              <motion.div key={i} initial={{ opacity:0, y:30 }}
+                whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
+                transition={{ delay:i*0.15 }} whileHover={{ y:-8 }}
+                className="relative z-10 flex flex-col items-center text-center bg-white rounded-2xl p-7 shadow-lg border border-border">
                 <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-5 shadow-lg shadow-primary/20">
                   <step.icon className="text-accent" size={28} />
                 </div>
                 <div className="absolute -top-3 -right-3 w-7 h-7 rounded-full bg-accent text-primary text-sm font-bold flex items-center justify-center shadow">
-                  {i + 1}
+                  {i+1}
                 </div>
                 <h3 className="font-bold text-lg text-primary mb-2">{step.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
@@ -289,33 +419,27 @@ export default function Placements() {
         </div>
       </section>
 
-      {/* Scrolling Company Logos */}
+      {/* Logo Marquee */}
       <LogoMarquee />
 
       {/* Important Note */}
       <section className="py-14 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-2xl border-2 border-amber-300 bg-amber-50 p-7 flex gap-5 items-start shadow-md"
-          >
+          <motion.div initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
+            className="rounded-2xl border-2 border-amber-300 bg-amber-50 p-7 flex gap-5 items-start shadow-md">
             <div className="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
               <AlertCircle className="text-amber-600" size={26} />
             </div>
             <div>
-              <h3 className="font-bold text-lg text-amber-900 mb-3">
-                📌 Important Note on Placement Assistance
-              </h3>
+              <h3 className="font-bold text-lg text-amber-900 mb-3">📌 Important Note on Placement Assistance</h3>
               <ul className="space-y-2.5 text-amber-800 text-sm">
                 {[
                   "RK Software Solutions provides 100% Placement Assistance — this means we help you prepare and connect you with opportunities, not a guarantee of employment.",
                   "Job placement depends on individual performance in interviews, communication skills, and aptitude.",
                   "Students must maintain a minimum 80% attendance and complete all assigned projects to be eligible for placement support.",
-                  "We do not charge any extra placement fees. All placement support is fully included in your course fee.",
+                  "We do not charge any extra placement fees. All support is fully included in your course fee.",
                   "Our placement cell remains active for 1 year post course-completion for all enrolled students.",
-                ].map((note, i) => (
+                ].map((note,i) => (
                   <li key={i} className="flex items-start gap-2.5">
                     <CheckCircle2 size={15} className="text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>{note}</span>
@@ -327,66 +451,32 @@ export default function Placements() {
         </div>
       </section>
 
-      {/* Success Stories */}
+      {/* Flip Testimonials */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
+          <FadeIn className="text-center max-w-3xl mx-auto mb-6">
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary border border-primary/10 px-4 py-2 rounded-full mb-4">
               <Star size={16} fill="currentColor" />
               <span className="text-sm font-semibold">Alumni Speak</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Real Students, Real Wins</h2>
-            <p className="text-lg text-muted-foreground">Every success story is a reminder of what's possible. You could be next.</p>
+            <p className="text-lg text-muted-foreground">
+              Hover over a card to reveal the full story and placement details.
+            </p>
           </FadeIn>
+
+          <p className="text-center text-xs text-muted-foreground mb-10 italic">
+            (Hover or tap any card to flip)
+          </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((student, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -8, transition: { duration: 0.25 } }}
-              >
-                <Card className="h-full bg-white border-none shadow-lg hover:shadow-2xl transition-shadow overflow-hidden">
-                  <div className={`h-2 w-full bg-gradient-to-r ${student.gradient}`} />
-                  <CardContent className="p-7 pt-6 relative">
-                    <Quote className="absolute top-5 right-5 text-accent/15" size={64} />
-
-                    <div className="flex items-center gap-4 mb-5">
-                      <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${student.gradient} flex items-center justify-center text-white font-bold text-lg shadow-lg flex-shrink-0`}>
-                        {student.initials}
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg text-primary leading-tight">{student.name}</h4>
-                        <p className="text-xs text-muted-foreground font-medium">{student.course}</p>
-                        <div className="flex gap-0.5 text-accent mt-1">
-                          {[1,2,3,4,5].map(s => <Star key={s} size={12} fill="currentColor" />)}
-                        </div>
-                      </div>
-                    </div>
-
-                    <p className="text-muted-foreground text-sm italic leading-relaxed mb-6 relative z-10">
-                      "{student.quote}"
-                    </p>
-
-                    <div className="flex justify-between items-center pt-4 border-t border-border">
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="w-6 h-6 rounded text-[9px] font-bold flex items-center justify-center text-white"
-                          style={{ backgroundColor: student.companyColor }}
-                        >
-                          {student.company.slice(0, 2)}
-                        </div>
-                        <span className="text-sm font-bold text-primary">{student.company}</span>
-                      </div>
-                      <Badge className="bg-green-100 text-green-800 border-none font-bold">
-                        📦 {student.package}
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
+              <motion.div key={i}
+                initial={{ opacity:0, y:40 }}
+                whileInView={{ opacity:1, y:0 }}
+                viewport={{ once:true }}
+                transition={{ delay:i*0.1 }}>
+                <FlipCard student={student} />
               </motion.div>
             ))}
           </div>
@@ -395,21 +485,14 @@ export default function Placements() {
 
       {/* CTA Banner */}
       <section className="py-20 bg-primary relative overflow-hidden">
-        <motion.div
-          className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"
-          animate={{ scale: [1, 1.3, 1] }}
-          transition={{ duration: 7, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-white/5 blur-3xl"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 9, repeat: Infinity, delay: 3 }}
-        />
+        <motion.div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"
+          animate={{ scale:[1,1.3,1] }} transition={{ duration:7, repeat:Infinity }} />
+        <motion.div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-white/5 blur-3xl"
+          animate={{ scale:[1,1.2,1] }} transition={{ duration:9, repeat:Infinity, delay:3 }} />
         <div className="container mx-auto px-4 text-center relative z-10">
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-5">
-              Ready to Join Our<br />
-              <span className="text-accent">Success Story?</span>
+              Ready to Join Our<br /><span className="text-accent">Success Story?</span>
             </h2>
             <p className="text-white/75 text-lg max-w-xl mx-auto mb-9">
               Enroll today and let our placement team work tirelessly to land you the career you deserve.
