@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   Trophy, Star, Building2, CheckCircle2,
   ArrowRight, Briefcase, Users, TrendingUp, Award,
-  AlertCircle, Phone, BadgeCheck, Quote
+  AlertCircle, Phone, BadgeCheck, Quote, Youtube
 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Badge } from "@/components/ui/badge";
@@ -483,6 +483,98 @@ export default function Placements() {
         </div>
       </section>
 
+      {/* YouTube Shorts — Student Success Stories */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#FF0000] via-[#FFB300] to-[#1a237e]" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-50 rounded-full blur-3xl opacity-60" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-50 rounded-full blur-3xl opacity-60" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Section header */}
+          <FadeIn className="text-center max-w-3xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-3 bg-red-600 text-white px-5 py-2.5 rounded-full mb-5 shadow-lg shadow-red-200">
+              <Youtube size={18} />
+              <span className="text-sm font-bold tracking-wide">STUDENT SUCCESS SHORTS</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+              Real Students.{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-[#FFB300]">
+                Real Results.
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Hear directly from our placed students — in their own words, on camera.
+              These are authentic success stories from the RK Software Solutions family.
+            </p>
+          </FadeIn>
+
+          {/* Shorts grid — portrait 9:16 */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+            {[
+              { id: "4Y0NmKCGEYk", label: "Placed Student Story" },
+              { id: "KPtlCuMdL1o", label: "Success Journey" },
+              { id: "6gKIc5BvJU0", label: "Career Transformation" },
+              { id: "v_27jDFDeQE", label: "Dream Job Achieved" },
+              { id: "s4otnRZqzR0", label: "IT Career Launch" },
+              { id: "hLAYY5e8Rgw", label: "Student Review" },
+            ].map((short, i) => (
+              <motion.div
+                key={short.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="flex flex-col"
+              >
+                {/* Portrait embed */}
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-gray-100 hover:border-red-300 transition-colors group"
+                  style={{ aspectRatio: "9/16" }}>
+                  {/* YouTube brand pill */}
+                  <div className="absolute top-2 left-2 z-10 flex items-center gap-1 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">
+                    <Youtube size={10} /> Shorts
+                  </div>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${short.id}?rel=0&modestbranding=1`}
+                    title={`RK Software Solutions — ${short.label}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                    loading="lazy"
+                  />
+                </div>
+                {/* Label */}
+                <p className="mt-2 text-center text-xs font-semibold text-muted-foreground line-clamp-1 px-1">
+                  {short.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom CTA strip */}
+          <FadeIn>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 bg-gradient-to-r from-red-600 to-red-700 rounded-3xl px-8 py-6 shadow-2xl shadow-red-200 max-w-2xl mx-auto">
+              <div className="text-white text-center sm:text-left">
+                <p className="font-bold text-lg leading-tight">Watch more on our channel</p>
+                <p className="text-white/75 text-sm">20+ training videos & student stories — all free</p>
+              </div>
+              <a
+                href="https://www.youtube.com/@RKSoftwareSolutionss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0"
+              >
+                <Button className="bg-white text-red-600 hover:bg-red-50 font-bold px-6 py-3 shadow-lg">
+                  <Youtube size={18} className="mr-2" /> Subscribe Free
+                </Button>
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* CTA Banner */}
       <section className="py-20 bg-primary relative overflow-hidden">
         <motion.div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-accent/10 blur-3xl"
@@ -503,7 +595,7 @@ export default function Placements() {
                   Browse Courses <ArrowRight size={18} className="ml-2" />
                 </Button>
               </Link>
-              <a href="tel:+919876543210">
+              <a href="tel:+919063616867">
                 <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg">
                   <Phone size={18} className="mr-2" /> Call Us Now
                 </Button>
