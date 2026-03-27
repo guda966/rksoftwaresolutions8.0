@@ -250,3 +250,17 @@
 .flip-back {
   transform: rotateY(180deg);
 }
+
+/* Hero Shorts scroller — continuous vertical scroll */
+@keyframes scrollShortsUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.shorts-scroll-track {
+  animation: scrollShortsUp 22s linear infinite;
+}
+
+.shorts-scroll-track:hover {
+  animation-play-state: paused;
+}

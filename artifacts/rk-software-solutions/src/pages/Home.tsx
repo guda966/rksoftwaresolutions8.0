@@ -205,7 +205,7 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-primary">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-primary/90 mix-blend-multiply z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/70 z-10" />
           <img
             src={`${import.meta.env.BASE_URL}images/hero-bg.png`}
             alt="Technology Background"
@@ -213,43 +213,114 @@ export default function Home() {
           />
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-20">
-          <div className="max-w-3xl">
-            <FadeIn direction="up">
-              <Badge className="bg-accent/20 text-accent border-accent/30 hover:bg-accent/30 text-sm mb-6 px-4 py-1.5 backdrop-blur-sm">
-                WAY TO SUCCESS
-              </Badge>
-            </FadeIn>
+        <div className="container mx-auto px-4 md:px-6 relative z-20 py-20">
+          <div className="flex items-center gap-10 xl:gap-16">
 
-            <FadeIn direction="up" delay={0.1}>
-              <h1 className="text-5xl md:text-7xl font-display font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
-                Your Gateway to a{" "}
-                <span className="text-accent relative inline-block">
-                  Successful
-                  <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/30 -z-10 rounded-full"></span>
-                </span>{" "}
-                IT Career
-              </h1>
-            </FadeIn>
+            {/* ── Left: Hero Text ── */}
+            <div className="flex-1 min-w-0">
+              <FadeIn direction="up">
+                <Badge className="bg-accent/20 text-accent border-accent/30 hover:bg-accent/30 text-sm mb-6 px-4 py-1.5 backdrop-blur-sm">
+                  WAY TO SUCCESS
+                </Badge>
+              </FadeIn>
 
-            <FadeIn direction="up" delay={0.2}>
-              <p className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed font-light max-w-2xl">
-                India's premier software training and placement institute. Master in-demand skills with industry experts and secure your dream job.
-              </p>
-            </FadeIn>
+              <FadeIn direction="up" delay={0.1}>
+                <h1 className="text-4xl md:text-6xl xl:text-7xl font-display font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
+                  Your Gateway to a{" "}
+                  <span className="text-accent relative inline-block">
+                    Successful
+                    <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/30 -z-10 rounded-full"></span>
+                  </span>{" "}
+                  IT Career
+                </h1>
+              </FadeIn>
 
-            <FadeIn direction="up" delay={0.3} className="flex flex-wrap gap-4">
-              <Link href="/courses">
-                <Button size="lg" className="bg-accent text-primary hover:bg-accent/90 text-lg px-8 h-14 font-bold shadow-xl shadow-accent/20 border-none">
-                  Explore Courses
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 text-lg px-8 h-14 font-semibold backdrop-blur-sm">
-                  Get Free Demo
-                </Button>
-              </Link>
-            </FadeIn>
+              <FadeIn direction="up" delay={0.2}>
+                <p className="text-lg md:text-xl xl:text-2xl text-white/80 mb-8 leading-relaxed font-light max-w-xl">
+                  India's premier software training and placement institute. Master in-demand skills with industry experts and secure your dream job.
+                </p>
+              </FadeIn>
+
+              <FadeIn direction="up" delay={0.3} className="flex flex-wrap gap-4">
+                <Link href="/courses">
+                  <Button size="lg" className="bg-accent text-primary hover:bg-accent/90 text-lg px-8 h-14 font-bold shadow-xl shadow-accent/20 border-none">
+                    Explore Courses
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 text-lg px-8 h-14 font-semibold backdrop-blur-sm">
+                    Get Free Demo
+                  </Button>
+                </Link>
+              </FadeIn>
+
+              <FadeIn direction="up" delay={0.5} className="mt-8">
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    {["PS","RK","AR","DN"].map(i => (
+                      <div key={i} className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-primary text-[10px] font-bold border-2 border-primary">{i}</div>
+                    ))}
+                  </div>
+                  <p className="text-white/70 text-sm"><span className="text-accent font-bold">5,000+</span> students placed successfully</p>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* ── Right: YouTube Shorts auto-scroller ── */}
+            <div className="hidden lg:flex flex-col items-center gap-3 shrink-0">
+              {/* Label pill */}
+              <div className="flex items-center gap-2 bg-red-600/90 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg mb-1">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#fff"/></svg>
+                Student Success Stories
+              </div>
+
+              {/* Scrolling strip */}
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-white/10"
+                style={{ height: "520px", width: "154px" }}>
+                {/* fade masks */}
+                <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-primary to-transparent z-10 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-primary to-transparent z-10 pointer-events-none" />
+
+                <div className="shorts-scroll-track flex flex-col gap-3 px-1 pt-1">
+                  {/* Render 5 + duplicate for seamless loop */}
+                  {[...["4Y0NmKCGEYk","KPtlCuMdL1o","6gKIc5BvJU0","v_27jDFDeQE","s4otnRZqzR0"],
+                    ...["4Y0NmKCGEYk","KPtlCuMdL1o","6gKIc5BvJU0","v_27jDFDeQE","s4otnRZqzR0"]
+                  ].map((id, i) => (
+                    <a
+                      key={`${id}-${i}`}
+                      href={`https://www.youtube.com/shorts/${id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative rounded-2xl overflow-hidden flex-shrink-0 group shadow-lg"
+                      style={{ width: "144px", height: "256px" }}
+                    >
+                      <img
+                        src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
+                        alt="Student testimonial"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                      {/* Play button */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-red-600/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          <svg viewBox="0 0 24 24" fill="white" className="w-4 h-4 ml-0.5"><polygon points="5,3 19,12 5,21" /></svg>
+                        </div>
+                      </div>
+                      {/* Shorts badge */}
+                      <div className="absolute top-2 left-2 flex items-center gap-1 bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-2.5 h-2.5"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#fff"/></svg>
+                        Shorts
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <p className="text-white/50 text-[11px] text-center">Hover to pause · Click to watch</p>
+            </div>
+
           </div>
         </div>
 

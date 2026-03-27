@@ -512,7 +512,7 @@ export default function Placements() {
           </FadeIn>
 
           {/* Shorts grid — portrait 9:16 */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mb-12 max-w-5xl mx-auto">
             {[
               { id: "4Y0NmKCGEYk", label: "Placed Student Story" },
               { id: "KPtlCuMdL1o", label: "Success Journey" },
@@ -520,6 +520,7 @@ export default function Placements() {
               { id: "v_27jDFDeQE", label: "Dream Job Achieved" },
               { id: "s4otnRZqzR0", label: "IT Career Launch" },
               { id: "hLAYY5e8Rgw", label: "Student Review" },
+              { id: "Pkv_5lxTXDU", label: "Placement Experience" },
             ].map((short, i) => (
               <motion.div
                 key={short.id}
