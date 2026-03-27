@@ -11,12 +11,12 @@ import { Link } from "wouter";
 
 /* ── Journey / Timeline ── */
 const milestones = [
-  { year: "2015", title: "The Beginning", desc: "Started with a single classroom and 10 students. A bold vision to bridge the gap between education and employability in Hyderabad." },
-  { year: "2017", title: "First 100 Placements", desc: "Crossed 100 successful placements. TCS, Infosys and Wipro became our first major hiring partners, validating our approach." },
-  { year: "2019", title: "Expanding Horizons", desc: "Launched Data Science, Digital Marketing and Non-IT programs. Moved to a larger campus in Madhura Nagar with dedicated labs." },
-  { year: "2021", title: "Going Online & Hybrid", desc: "Pivoted seamlessly to online and hybrid delivery during the pandemic — zero batch cancellations, 100% continuity." },
-  { year: "2023", title: "5,000 Students Placed", desc: "Celebrated a landmark: 5,000+ students placed. Onboarded 200+ hiring partners across India." },
-  { year: "2025", title: "Way to Success, Stronger", desc: "Launched Medical Billing & Coding, Cybersecurity and Salesforce programs. Becoming a one-stop career transformation hub." },
+  { year: "2020", title: "The Beginning", desc: "Founded in Hyderabad with a single batch and a bold mission — turn aspiring professionals into job-ready IT experts." },
+  { year: "2021", title: "First Placements", desc: "Achieved our first major placements in top IT firms, building trust with students and hiring partners alike." },
+  { year: "2022", title: "Expanding Programs", desc: "Launched Data Science, Digital Marketing and Non-IT tracks. Campus upgraded to dedicated labs in Madhura Nagar." },
+  { year: "2023", title: "200+ Hiring Partners", desc: "Onboarded 200+ companies across India. Placement rate crossed 90% — validating our industry-first approach." },
+  { year: "2024", title: "5,000 Careers Built", desc: "Reached a landmark milestone: 5,000+ students successfully placed in roles across India." },
+  { year: "2025", title: "Way to Success, Stronger", desc: "Added Medical Billing, Cybersecurity and Salesforce. Growing into Telangana's most trusted training hub." },
 ];
 
 /* ── Core Values ── */
@@ -53,26 +53,25 @@ export default function About() {
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <FadeIn>
             <Badge className="bg-accent/20 text-accent border-accent/30 mb-6 text-sm font-bold px-4 py-1.5">
-              Est. 2015 · Hyderabad, India
+              Est. 2020 · Hyderabad, India
             </Badge>
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-5 text-white leading-tight">
               We Don't Just Teach Code.<br />
               <span className="text-accent">We Engineer Careers.</span>
             </h1>
             <p className="text-xl text-white/75 max-w-2xl mx-auto font-light leading-relaxed">
-              A decade of transforming fresh graduates and working professionals into confident, job-ready IT and Non-IT experts.
+              Transforming fresh graduates and working professionals into confident, job-ready IT experts.
             </p>
           </FadeIn>
 
           {/* Quick stats */}
-          <FadeIn delay={0.2} className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+          <FadeIn delay={0.2} className="mt-12 flex flex-wrap justify-center gap-6 max-w-xl mx-auto">
             {[
-              { val: "10+", label: "Years Active" },
               { val: "5K+", label: "Careers Built" },
               { val: "200+", label: "Hiring Partners" },
-              { val: "95%", label: "Placement Rate" },
+              { val: "90%+", label: "Placement Rate" },
             ].map((s, i) => (
-              <div key={i} className="bg-white/10 backdrop-blur border border-white/15 rounded-2xl py-4 px-3">
+              <div key={i} className="bg-white/10 backdrop-blur border border-white/15 rounded-2xl py-4 px-8">
                 <p className="text-3xl font-display font-bold text-accent mb-1">{s.val}</p>
                 <p className="text-white/70 text-sm font-medium">{s.label}</p>
               </div>
@@ -88,30 +87,15 @@ export default function About() {
 
             {/* Photo column */}
             <FadeIn direction="left">
-              <div className="relative flex justify-center">
-                {/* Decorative rings */}
-                <div className="absolute w-[340px] h-[340px] md:w-[420px] md:h-[420px] rounded-full border-[3px] border-dashed border-accent/30 animate-[spin_18s_linear_infinite]" />
-                <div className="absolute w-[280px] h-[280px] md:w-[360px] md:h-[360px] rounded-full border-[2px] border-primary/10" />
-
-                {/* Photo */}
-                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-[6px] border-white shadow-2xl shadow-primary/20 z-10">
+              <div className="flex justify-center">
+                <div className="relative inline-block">
+                  {/* Subtle glow behind photo */}
+                  <div className="absolute inset-0 bg-accent/10 rounded-3xl blur-2xl scale-105 pointer-events-none" />
                   <img
                     src={`${import.meta.env.BASE_URL}images/ceo.jpeg`}
-                    alt="Founder & CEO — RK Software Solutions"
-                    className="w-full h-full object-cover object-top"
+                    alt="G.V.Krishna Reddy — Founder & CEO, RK Software Solutions"
+                    className="relative z-10 w-72 md:w-96 drop-shadow-2xl"
                   />
-                </div>
-
-                {/* Floating badge */}
-                <div className="absolute bottom-4 right-4 md:bottom-8 md:right-0 bg-primary text-white px-4 py-2.5 rounded-2xl shadow-xl z-20 text-sm font-bold">
-                  <p className="text-accent font-black text-base">10+ Years</p>
-                  <p className="text-white/80 text-xs">Leading the Way</p>
-                </div>
-
-                {/* Students placed badge */}
-                <div className="absolute top-4 left-4 md:top-8 md:left-0 bg-accent text-primary px-4 py-2.5 rounded-2xl shadow-xl z-20 text-sm font-bold">
-                  <p className="font-black text-base">5,000+</p>
-                  <p className="text-primary/70 text-xs">Students Placed</p>
                 </div>
               </div>
             </FadeIn>
@@ -120,38 +104,34 @@ export default function About() {
             <FadeIn direction="right">
               <div>
                 <Badge className="bg-primary/5 text-primary border-primary/10 mb-4">Founder & CEO</Badge>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-2 leading-tight">
-                  Ravi Kumar
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-1 leading-tight">
+                  G.V.Krishna Reddy
                 </h2>
-                <p className="text-accent font-bold text-lg mb-6 uppercase tracking-wide">
+                <p className="text-accent font-bold text-base mb-5 uppercase tracking-wide">
                   Founder & CEO — RK Software Solutions
                 </p>
 
                 {/* Pull quote */}
-                <div className="relative mb-6 pl-5 border-l-4 border-accent">
-                  <Quote size={20} className="text-accent/40 absolute -top-1 left-[-2px]" />
-                  <p className="text-lg text-muted-foreground italic leading-relaxed">
-                    "I started RK Software Solutions because I saw talented young people struggle to get their first job — not because they lacked potential, but because they lacked the right training. That gap needed to be filled."
+                <div className="relative mb-5 pl-5 border-l-4 border-accent">
+                  <Quote size={18} className="text-accent/40 absolute -top-1 left-[-2px]" />
+                  <p className="text-base text-muted-foreground italic leading-relaxed">
+                    "I started RK Software Solutions to bridge the gap between education and industry — giving every student the real skills and confidence they need to land their dream job."
                   </p>
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  With over a decade of hands-on experience in software development and IT education, Ravi Kumar founded RK Software Solutions in 2015 with a singular mission: to make quality, job-focused IT training accessible to every aspiring professional in Hyderabad and beyond.
-                </p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Under his leadership, the institute has grown from a 10-student classroom into one of Telangana's most trusted training and placement hubs — with over 5,000 successful careers and counting. His teaching philosophy is simple: <strong className="text-primary">real skills, real projects, real jobs.</strong>
+                  G.V.Krishna Reddy founded RK Software Solutions in 2020 with a clear goal: practical, job-focused training that actually gets people hired. Under his leadership, the institute has grown into one of Telangana's most trusted placement hubs. His philosophy: <strong className="text-primary">real skills, real projects, real jobs.</strong>
                 </p>
 
                 {/* Key achievements */}
-                <div className="space-y-2.5 mb-8">
+                <div className="space-y-2.5 mb-7">
                   {[
-                    "B.Tech in Computer Science · 10+ years industry experience",
-                    "Personally trained 2,000+ students in Full Stack & Java",
-                    "Built partnerships with 200+ top IT companies across India",
+                    "5,000+ students placed across India",
+                    "200+ active hiring partners",
                     "Mentored 50+ batches from fresher to placement",
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <CheckCircle2 size={16} className="text-accent mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 size={15} className="text-accent mt-0.5 flex-shrink-0" />
                       <span className="text-sm text-muted-foreground">{item}</span>
                     </div>
                   ))}
@@ -185,10 +165,10 @@ export default function About() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <FadeIn className="text-center mb-16">
-            <Badge className="bg-accent/20 text-accent border-accent/30 mb-5">A Decade of Growth</Badge>
+            <Badge className="bg-accent/20 text-accent border-accent/30 mb-5">Since 2020</Badge>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">Our Journey</h2>
             <p className="text-lg text-white/65 max-w-xl mx-auto">
-              From a single room in Hyderabad to shaping thousands of careers across India.
+              From a single batch in Hyderabad to shaping thousands of careers across India.
             </p>
           </FadeIn>
 
