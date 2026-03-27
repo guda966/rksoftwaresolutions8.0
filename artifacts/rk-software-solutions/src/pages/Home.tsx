@@ -162,7 +162,7 @@ function TestimonialsCarousel() {
 
 /* ─── Data ───────────────────────────────────────────── */
 const stats = [
-  { icon: Users, target: 5000, suffix: "+", label: "Students Trained" },
+  { icon: Users, target: 3000, suffix: "+", label: "Students Placed" },
   { icon: Briefcase, target: 200, suffix: "+", label: "Hiring Partners" },
   { icon: TrendingUp, target: 90, suffix: "%+", label: "Placement Rate" },
   { icon: Award, target: 20, suffix: "+", label: "Courses Offered" },
@@ -255,7 +255,7 @@ export default function Home() {
                       <div key={i} className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-primary text-[9px] font-bold border-2 border-primary">{i}</div>
                     ))}
                   </div>
-                  <p className="text-white/65 text-sm"><span className="text-accent font-bold">5,000+</span> students placed successfully</p>
+                  <p className="text-white/65 text-sm"><span className="text-accent font-bold">3,000+</span> students placed successfully</p>
                 </div>
               </FadeIn>
 
@@ -510,7 +510,7 @@ export default function Home() {
               Start Your Journey Today
             </h2>
             <p className="text-lg text-white/70 max-w-xl mx-auto mb-10">
-              New batches start every Monday. Join thousands of alumni who chose RK as their launchpad.
+              New batches launching soon — limited seats available. Join 3,000+ alumni who chose RK as their launchpad.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/contact">

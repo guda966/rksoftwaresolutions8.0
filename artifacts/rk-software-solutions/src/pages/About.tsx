@@ -15,7 +15,7 @@ const milestones = [
   { year: "2021", title: "First Placements", desc: "Achieved our first major placements in top IT firms, building trust with students and hiring partners alike." },
   { year: "2022", title: "Expanding Programs", desc: "Launched Data Science, Digital Marketing and Non-IT tracks. Campus upgraded to dedicated labs in Madhura Nagar." },
   { year: "2023", title: "200+ Hiring Partners", desc: "Onboarded 200+ companies across India. Placement rate crossed 90% — validating our industry-first approach." },
-  { year: "2024", title: "5,000 Careers Built", desc: "Reached a landmark milestone: 5,000+ students successfully placed in roles across India." },
+  { year: "2024", title: "3,000 Careers Built", desc: "Reached a significant milestone: 3,000+ students successfully placed in roles across India." },
   { year: "2025", title: "Way to Success, Stronger", desc: "Added Medical Billing, Cybersecurity and Salesforce. Growing into Telangana's most trusted training hub." },
 ];
 
@@ -67,7 +67,7 @@ export default function About() {
           {/* Quick stats */}
           <FadeIn delay={0.2} className="mt-12 flex flex-wrap justify-center gap-6 max-w-xl mx-auto">
             {[
-              { val: "5K+", label: "Careers Built" },
+              { val: "3K+", label: "Careers Built" },
               { val: "200+", label: "Hiring Partners" },
               { val: "90%+", label: "Placement Rate" },
             ].map((s, i) => (
@@ -126,7 +126,7 @@ export default function About() {
                 {/* Key achievements */}
                 <div className="space-y-2.5 mb-7">
                   {[
-                    "5,000+ students placed across India",
+                    "3,000+ students placed across India",
                     "200+ active hiring partners",
                     "Mentored 50+ batches from fresher to placement",
                   ].map((item, i) => (

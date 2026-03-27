@@ -37,11 +37,12 @@ function NavLogo() {
 }
 
 const TICKER_MESSAGES = [
-  "🎓 New batches starting every Monday!",
-  "🚀 100% Job Assistance for all enrolled students",
-  "💼 200+ Hiring Partners across India",
-  "📞 Call us: +91-90636 16867",
-  "⭐ 5000+ Students Placed Successfully",
+  "3000+ Students Placed in Top IT Companies",
+  "100% Job Assistance for Every Enrolled Student",
+  "200+ Hiring Partners Across India",
+  "Courses Completed in 30–60 Days — Get Placed Fast",
+  "Call Us: +91 90636 16867",
+  "90%+ Placement Rate — Industry's Best Record",
 ];
 
 function AnnouncementTicker() {

@@ -414,7 +414,7 @@ export default function Placements() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-primary text-center">
             {[
               { value:"95%",     label:"Placement Rate",  icon:TrendingUp },
-              { value:"5000+",   label:"Students Placed", icon:Users      },
+              { value:"3000+",   label:"Students Placed", icon:Users      },
               { value:"200+",    label:"Hiring Partners", icon:Building2  },
               { value:"3.5 LPA", label:"Avg. Package",    icon:Briefcase  },
             ].map((stat,i) => (
