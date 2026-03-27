@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Navigation, Image, Star, ExternalLink } from "lucide-react";
 
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Card, CardContent } from "@/components/ui/card";
@@ -283,20 +282,120 @@ export default function Contact() {
                 </Card>
               </FadeIn>
 
-              {/* Map Placeholder */}
+              {/* Embedded Google Map */}
               <FadeIn direction="up" delay={0.2}>
-                <div className="w-full h-[300px] bg-muted rounded-xl border border-border overflow-hidden relative shadow-inner group cursor-pointer flex items-center justify-center">
-                  <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop')] bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                  <div className="relative z-10 flex flex-col items-center p-6 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg transform group-hover:scale-105 transition-transform duration-300">
-                    <MapPin size={40} className="text-primary mb-2" />
-                    <span className="font-display font-bold text-lg text-primary">Find Us on Google Maps</span>
-                    <span className="text-sm text-muted-foreground mt-1">Click to open directions</span>
-                  </div>
+                <div className="w-full rounded-2xl overflow-hidden shadow-xl border border-border">
+                  <iframe
+                    title="RK Software Solutions Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d476.2!2d78.4408251!3d17.4396746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb918904b99407%3A0xf7b6427f4281c2fc!2sRK%20Software%20Solutions!5e0!3m2!1sen!2sin!4v1711484400000!5m2!1sen!2sin"
+                    width="100%"
+                    height="340"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </FadeIn>
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* ── Visit Our Institute ── */}
+      <section className="py-20 bg-primary relative overflow-hidden">
+        {/* Decorative blobs */}
+        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-white/5 blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <FadeIn className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-4 py-2 rounded-full mb-5">
+              <MapPin size={16} />
+              <span className="text-sm font-semibold">See Our Institute</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+              Visit Us in Person
+            </h2>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+              Walk into our campus, meet our trainers, and experience the learning environment before you enrol. We're always happy to show you around.
+            </p>
+          </FadeIn>
+
+          {/* Full-width map */}
+          <FadeIn delay={0.1}>
+            <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 mb-10">
+              <iframe
+                title="RK Software Solutions — Full Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d952.4!2d78.4407593!3d17.4396924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb918904b99407%3A0xf7b6427f4281c2fc!2sRK%20Software%20Solutions!5e0!3m2!1sen!2sin!4v1711484400000!5m2!1sen!2sin"
+                width="100%"
+                height="480"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </FadeIn>
+
+          {/* Info strip + CTA buttons */}
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              {
+                icon: MapPin,
+                title: "Address",
+                lines: ["RK Software Solutions", "Near Bus Stand, Hyderabad", "Telangana — 500001, India"],
+              },
+              {
+                icon: Clock,
+                title: "Visit Hours",
+                lines: ["Mon – Sat: 9:00 AM – 8:00 PM", "Sunday: 10:00 AM – 2:00 PM", "Walk-ins welcome anytime"],
+              },
+              {
+                icon: Star,
+                title: "On Google",
+                lines: ["⭐⭐⭐⭐⭐ Rated on Google Maps", "View student reviews & photos", "Check real-time opening hours"],
+              },
+            ].map((card, i) => (
+              <FadeIn key={i} delay={i * 0.1} direction="up">
+                <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-6 text-white">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                      <card.icon size={20} className="text-accent" />
+                    </div>
+                    <h4 className="font-bold text-base">{card.title}</h4>
+                  </div>
+                  {card.lines.map((line, j) => (
+                    <p key={j} className="text-white/70 text-sm leading-relaxed">{line}</p>
+                  ))}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Action buttons */}
+          <FadeIn className="flex flex-wrap gap-4 justify-center">
+            <a
+              href="https://www.google.com/maps/place/RK+Software+Solutions/@17.4396746,78.4408251,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb918904b99407:0xf7b6427f4281c2fc!8m2!3d17.4396746!4d78.4408251!16s%2Fg%2F11pzrrr3g0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-accent text-primary hover:bg-accent/90 font-bold px-8 py-5 text-base shadow-xl shadow-accent/20">
+                <Navigation size={18} className="mr-2" /> Get Directions
+              </Button>
+            </a>
+            <a
+              href="https://www.google.com/maps/place/RK+Software+Solutions/@17.4396924,78.4407593,3a,75y,90t/data=!3m8!1e5!3m6!1sAF1QipMSxF5sSZrMTJE6LYoO3MNdtVf4vypFq4l7v2uq!2e10!3e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipMSxF5sSZrMTJE6LYoO3MNdtVf4vypFq4l7v2uq%3Dw203-h360-k-no!7i1080!8i1920!4m17!1m7!3m6!1s0x3bcb918904b99407:0xf7b6427f4281c2fc!2sRK+Software+Solutions!8m2!3d17.4396746!4d78.4408251!16s%2Fg%2F11pzrrr3g0!3m8!1s0x3bcb918904b99407:0xf7b6427f4281c2fc!8m2!3d17.4396746!4d78.4408251!10e5!14m1!1BCgIgARICCAQ!16s%2Fg%2F11pzrrr3g0!18m1!1e1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-5 text-base">
+                <Image size={18} className="mr-2" /> View Photos &amp; Videos on Google Maps
+                <ExternalLink size={14} className="ml-2 opacity-70" />
+              </Button>
+            </a>
+          </FadeIn>
         </div>
       </section>
     </div>
