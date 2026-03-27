@@ -316,7 +316,7 @@ export default function Home() {
 
               {/* Scrolling strip */}
               <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-white/10"
-                style={{ height: "520px", width: "154px" }}>
+                style={{ height: "650px", width: "196px" }}>
                 {/* fade masks */}
                 <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-primary to-transparent z-10 pointer-events-none" />
                 <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-primary to-transparent z-10 pointer-events-none" />
@@ -332,7 +332,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="relative rounded-2xl overflow-hidden flex-shrink-0 group shadow-lg"
-                      style={{ width: "144px", height: "256px" }}
+                      style={{ width: "183px", height: "325px" }}
                     >
                       <img
                         src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
