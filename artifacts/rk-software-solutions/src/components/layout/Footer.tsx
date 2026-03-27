@@ -71,6 +71,7 @@ export function Footer() {
                 { label: 'About Us', href: '/about' },
                 { label: 'Courses', href: '/courses' },
                 { label: 'Placements', href: '/placements' },
+                { label: 'Careers', href: '/careers' },
                 { label: 'Contact Us', href: '/contact' },
               ].map((link) => (
                 <li key={link.label}>

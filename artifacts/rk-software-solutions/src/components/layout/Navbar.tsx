@@ -187,6 +187,7 @@ export function Navbar() {
     { name: "About Us", path: "/about" },
     { name: "Courses", path: "/courses" },
     { name: "Placements", path: "/placements" },
+    { name: "Careers", path: "/careers" },
     { name: "Contact", path: "/contact" },
   ];
 
