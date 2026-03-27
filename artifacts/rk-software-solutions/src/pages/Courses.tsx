@@ -285,12 +285,12 @@ function CourseGrid({ courses, categories }: { courses: Course[]; categories: st
   return (
     <div>
       {/* Category Filter */}
-      <div className="flex flex-wrap gap-2 justify-center mb-10">
+      <div className="flex gap-2 overflow-x-auto pb-2 mb-10 justify-start sm:flex-wrap sm:justify-center sm:overflow-x-visible sm:pb-0 no-scrollbar">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 border ${
+            className={`flex-shrink-0 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 border ${
               activeCategory === cat
                 ? "bg-primary text-white border-primary shadow-md"
                 : "bg-white text-muted-foreground border-border hover:border-primary hover:text-primary"
@@ -345,16 +345,16 @@ export default function Courses() {
       <section className="container mx-auto px-4 md:px-6 py-16">
         <Tabs defaultValue="it" className="w-full">
           <div className="flex justify-center mb-12">
-            <TabsList className="bg-white p-2 shadow-xl rounded-2xl border border-border h-auto">
+            <TabsList className="bg-white p-1.5 sm:p-2 shadow-xl rounded-2xl border border-border h-auto w-full sm:w-auto">
               <TabsTrigger
                 value="it"
-                className="text-base sm:text-lg px-6 sm:px-8 py-3 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white font-bold transition-all"
+                className="flex-1 sm:flex-none text-sm sm:text-lg px-4 sm:px-8 py-2.5 sm:py-3 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white font-bold transition-all"
               >
                 💻 IT Courses
               </TabsTrigger>
               <TabsTrigger
                 value="non-it"
-                className="text-base sm:text-lg px-6 sm:px-8 py-3 rounded-xl data-[state=active]:bg-accent data-[state=active]:text-primary font-bold transition-all"
+                className="flex-1 sm:flex-none text-sm sm:text-lg px-4 sm:px-8 py-2.5 sm:py-3 rounded-xl data-[state=active]:bg-accent data-[state=active]:text-primary font-bold transition-all"
               >
                 📋 Non-IT Courses
               </TabsTrigger>

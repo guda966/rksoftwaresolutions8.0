@@ -199,7 +199,7 @@ export default function Home() {
     <div className="w-full">
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[90vh] flex items-start overflow-hidden bg-primary">
+      <section className="relative min-h-fit lg:min-h-[90vh] flex items-start overflow-hidden bg-primary">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/70 z-10" />
           <img src={`${import.meta.env.BASE_URL}images/hero-bg.png`} alt="" className="w-full h-full object-cover" />
