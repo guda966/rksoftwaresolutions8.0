@@ -22,6 +22,47 @@ interface Testimonial {
   initials: string;
 }
 
+const HERO_WORDS = ["Successful", "Rewarding", "High-Paying", "Thriving", "Brilliant", "Promising"];
+
+function TypewriterWord() {
+  const [wordIdx, setWordIdx] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) {
+      const t = setTimeout(() => { setPaused(false); setDeleting(true); }, 1600);
+      return () => clearTimeout(t);
+    }
+    const word = HERO_WORDS[wordIdx];
+    if (!deleting) {
+      if (displayed.length < word.length) {
+        const t = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), 80);
+        return () => clearTimeout(t);
+      } else {
+        setPaused(true);
+      }
+    } else {
+      if (displayed.length > 0) {
+        const t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 45);
+        return () => clearTimeout(t);
+      } else {
+        setDeleting(false);
+        setWordIdx((i) => (i + 1) % HERO_WORDS.length);
+      }
+    }
+  }, [displayed, deleting, paused, wordIdx]);
+
+  return (
+    <span className="text-accent relative inline-block">
+      {displayed || "\u00A0"}
+      <span className="inline-block w-[3px] h-[0.85em] bg-accent ml-0.5 align-middle animate-pulse rounded-sm" />
+      <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/30 -z-10 rounded-full" />
+    </span>
+  );
+}
+
 function AnimatedCounter({ target, suffix, duration = 2000 }: { target: number; suffix: string; duration?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -227,10 +268,7 @@ export default function Home() {
               <FadeIn direction="up" delay={0.1}>
                 <h1 className="text-4xl md:text-6xl xl:text-7xl font-display font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
                   Your Gateway to a{" "}
-                  <span className="text-accent relative inline-block">
-                    Successful
-                    <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/30 -z-10 rounded-full"></span>
-                  </span>{" "}
+                  <TypewriterWord />{" "}
                   IT Career
                 </h1>
               </FadeIn>
