@@ -31,7 +31,7 @@ const TICKER_MESSAGES = [
   "🎓 New batches starting every Monday!",
   "🚀 100% Job Assistance for all enrolled students",
   "💼 200+ Hiring Partners across India",
-  "📞 Call us: +91-9876543210",
+  "📞 Call us: +91-90636 16867",
   "⭐ 5000+ Students Placed Successfully",
 ];
 
@@ -125,7 +125,7 @@ function FreeDemoModal({
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="demo-phone">Phone Number *</Label>
-                <Input id="demo-phone" placeholder="+91 98765 43210" required />
+                <Input id="demo-phone" placeholder="+91 90636 16867" required />
               </div>
             </div>
             <div className="space-y-1.5">
