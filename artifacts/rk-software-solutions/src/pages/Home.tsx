@@ -7,6 +7,7 @@ import {
   BookOpen, Laptop, ClipboardCheck, Rocket, PhoneCall,
   Shield, Clock, Zap, HeartHandshake
 } from "lucide-react";
+import { GoogleReviews } from "@/components/ui/GoogleReviews";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -258,12 +259,15 @@ export default function Home() {
                 </div>
               </FadeIn>
 
-              {/* Trust badges */}
+              {/* Trust badges + Google rating */}
               <FadeIn direction="up" delay={0.55}>
-                <div className="flex flex-wrap gap-3 mt-6">
+                <div className="flex flex-wrap items-center gap-3 mt-6">
                   {["⚡ 30-60 Day Programs", "🏆 200+ Hiring Partners", "🎯 Real Projects"].map(b => (
                     <span key={b} className="text-xs font-semibold text-white/60 bg-white/8 border border-white/10 px-3 py-1.5 rounded-full backdrop-blur">{b}</span>
                   ))}
+                  <div className="mt-1">
+                    <GoogleReviews compact />
+                  </div>
                 </div>
               </FadeIn>
             </div>
@@ -477,6 +481,20 @@ export default function Home() {
           <FadeIn>
             <TestimonialsCarousel />
           </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Google Reviews ── */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <FadeIn className="text-center mb-12">
+            <Badge className="bg-[#4285F4]/10 text-[#4285F4] border-[#4285F4]/20 mb-5">Verified on Google</Badge>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-3">Rated 5★ on Google</h2>
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              Our students don't just say it in person — they say it on Google too.
+            </p>
+          </FadeIn>
+          <GoogleReviews />
         </div>
       </section>
 
