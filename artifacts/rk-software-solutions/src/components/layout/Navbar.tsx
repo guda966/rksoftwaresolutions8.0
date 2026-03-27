@@ -207,11 +207,11 @@ export function Navbar() {
               <div className="relative w-12 h-12 flex-shrink-0 rounded-full bg-primary flex items-center justify-center text-accent font-display font-bold text-xl overflow-hidden group-hover:shadow-lg transition-all duration-300">
                 <NavLogoAvatar />
               </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl leading-tight text-primary uppercase tracking-wide">
+              <div className="flex flex-col min-w-0">
+                <span className="font-display font-bold text-base sm:text-xl leading-tight text-primary uppercase tracking-wide truncate">
                   RK Software Solutions
                 </span>
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
+                <span className="hidden sm:block text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
                   Training & Placement Services
                 </span>
               </div>

@@ -245,7 +245,7 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-primary">
+      <section className="relative min-h-[90vh] flex items-start overflow-hidden bg-primary">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-primary/90 mix-blend-multiply z-10" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/70 z-10" />
@@ -256,8 +256,8 @@ export default function Home() {
           />
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-20 py-20">
-          <div className="flex items-center gap-10 xl:gap-16">
+        <div className="container mx-auto px-4 md:px-6 relative z-20 pt-10 pb-20">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-10 xl:gap-16">
 
             {/* ── Left: Hero Text ── */}
             <div className="flex-1 min-w-0">
@@ -268,7 +268,7 @@ export default function Home() {
               </FadeIn>
 
               <FadeIn direction="up" delay={0.1}>
-                <h1 className="text-4xl md:text-6xl xl:text-7xl font-display font-extrabold text-white leading-tight mb-6 tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-7xl font-display font-extrabold text-white leading-tight mb-6 tracking-tight">
                   <span className="block">Your Gateway to a</span>
                   <TypewriterWord />
                   <span className="block">IT Career</span>
