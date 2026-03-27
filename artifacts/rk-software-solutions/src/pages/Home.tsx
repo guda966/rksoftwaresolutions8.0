@@ -294,7 +294,7 @@ export default function Home() {
                 </Link>
               </FadeIn>
 
-              <FadeIn direction="up" delay={0.5} className="mt-8">
+              <FadeIn direction="up" delay={0.5} className="mt-4">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
                     {["PS","RK","AR","DN"].map(i => (
