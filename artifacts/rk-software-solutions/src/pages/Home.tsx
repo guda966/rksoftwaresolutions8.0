@@ -453,12 +453,12 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: Code2, title: "Full Stack Developer", duration: "6 Months", color: "bg-blue-500", desc: "Master MERN/Java/Python stack front to back." },
-              { icon: Database, title: "Data Science & AI", duration: "6 Months", color: "bg-purple-500", desc: "Deep dive into ML, Python, Data Analytics." },
-              { icon: Bug, title: "Software Testing", duration: "3 Months", color: "bg-red-500", desc: "Manual & Automation (Selenium) testing." },
-              { icon: MonitorPlay, title: "UI/UX Design", duration: "3 Months", color: "bg-pink-500", desc: "Design thinking, Figma, prototyping." },
-              { icon: Target, title: "Digital Marketing", duration: "3 Months", color: "bg-green-500", desc: "SEO, SEM, Social Media, Google Ads." },
-              { icon: TrendingUp, title: "Tally Prime with GST", duration: "2 Months", color: "bg-amber-500", desc: "Complete business accounting solution." },
+              { icon: Code2, title: "Full Stack Development", duration: "60 Days", color: "bg-blue-500", desc: "Master MERN/Java/Python stack front to back." },
+              { icon: Database, title: "Data Science & AI", duration: "60 Days", color: "bg-purple-500", desc: "ML, Python, Deep Learning & Data Analytics." },
+              { icon: Bug, title: "Software Testing", duration: "45 Days", color: "bg-red-500", desc: "Manual & Automation (Selenium, Postman)." },
+              { icon: MonitorPlay, title: "UI/UX Design", duration: "45 Days", color: "bg-pink-500", desc: "Design thinking, Figma & prototyping." },
+              { icon: Target, title: "Digital Marketing", duration: "45 Days", color: "bg-green-500", desc: "SEO, SEM, Social Media, Google Ads." },
+              { icon: TrendingUp, title: "Medical Billing & Coding", duration: "60 Days", color: "bg-amber-500", desc: "ICD-10 coding, US insurance & HIPAA." },
             ].map((course, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <Card className="h-full border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-300 overflow-hidden group">
