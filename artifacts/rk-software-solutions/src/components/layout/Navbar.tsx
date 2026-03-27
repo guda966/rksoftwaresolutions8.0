@@ -48,7 +48,7 @@ const TICKER_MESSAGES = [
 function AnnouncementTicker() {
   const repeated = [...TICKER_MESSAGES, ...TICKER_MESSAGES];
   return (
-    <div className="hidden md:block bg-primary text-primary-foreground py-1.5 overflow-hidden relative">
+    <div className="bg-primary text-primary-foreground py-1.5 overflow-hidden relative">
       <div className="flex items-center">
         <div className="ticker-track flex gap-16 whitespace-nowrap">
           {repeated.map((msg, i) => (
@@ -128,7 +128,7 @@ function FreeDemoModal({
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4 pt-2">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <Label htmlFor="demo-name">Your Name *</Label>
                 <Input id="demo-name" placeholder="e.g. Ravi Kumar" required />
