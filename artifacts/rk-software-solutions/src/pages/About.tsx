@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import {
   Target, Lightbulb, Users, Award, BookOpen, Clock,
-  Linkedin, Mail, Quote, CheckCircle2, TrendingUp, Star
+  Mail, Quote, CheckCircle2, TrendingUp, Star
 } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Card, CardContent } from "@/components/ui/card";
@@ -138,11 +138,6 @@ export default function About() {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <a href="https://linkedin.com/in/rk-software-solutions-45a144273" target="_blank" rel="noopener noreferrer">
-                    <Button className="bg-[#0A66C2] hover:bg-[#0A66C2]/90 text-white font-bold gap-2">
-                      <Linkedin size={16} /> LinkedIn
-                    </Button>
-                  </a>
                   <Link href="/contact">
                     <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white font-bold gap-2">
                       <Mail size={16} /> Get in Touch
