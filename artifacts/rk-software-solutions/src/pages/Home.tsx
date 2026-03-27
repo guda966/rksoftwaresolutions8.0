@@ -55,10 +55,12 @@ function TypewriterWord() {
   }, [displayed, deleting, paused, wordIdx]);
 
   return (
-    <span className="text-accent relative inline-block">
-      {displayed || "\u00A0"}
-      <span className="inline-block w-[3px] h-[0.85em] bg-accent ml-0.5 align-middle animate-pulse rounded-sm" />
-      <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/30 -z-10 rounded-full" />
+    <span className="block">
+      <span className="text-accent relative inline-block">
+        {displayed || "\u00A0"}
+        <span className="inline-block w-[3px] h-[0.85em] bg-accent ml-1 align-middle animate-pulse rounded-sm" />
+        <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/30 -z-10 rounded-full pointer-events-none" />
+      </span>
     </span>
   );
 }
@@ -266,10 +268,10 @@ export default function Home() {
               </FadeIn>
 
               <FadeIn direction="up" delay={0.1}>
-                <h1 className="text-4xl md:text-6xl xl:text-7xl font-display font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
-                  Your Gateway to a{" "}
-                  <TypewriterWord />{" "}
-                  IT Career
+                <h1 className="text-4xl md:text-6xl xl:text-7xl font-display font-extrabold text-white leading-tight mb-6 tracking-tight">
+                  <span className="block">Your Gateway to a</span>
+                  <TypewriterWord />
+                  <span className="block">IT Career</span>
                 </h1>
               </FadeIn>
 
