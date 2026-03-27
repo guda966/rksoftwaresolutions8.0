@@ -16,32 +16,34 @@ import { Link } from "wouter";
 
 interface Company {
   name: string;
-  short: string;          // ticker abbreviation
-  brand: string;          // brand hex
+  short: string;
+  brand: string;
   sector: string;
+  domain: string;
+  logo: string;           // direct logo image URL
 }
 
 const companies: Company[] = [
-  { name: "Tata Consultancy Services", short: "TCS",        brand: "#003087", sector: "IT Services"    },
-  { name: "Infosys",                   short: "INFOSYS",    brand: "#007CC2", sector: "IT Services"    },
-  { name: "Wipro",                     short: "WIPRO",      brand: "#341062", sector: "IT & Consulting" },
-  { name: "HCL Technologies",          short: "HCL",        brand: "#0074B7", sector: "Technology"     },
-  { name: "Capgemini",                 short: "Capgemini",  brand: "#0070AD", sector: "Consulting"     },
-  { name: "Tech Mahindra",             short: "Tech-M",     brand: "#C4122F", sector: "IT Services"    },
-  { name: "Cognizant",                 short: "Cognizant",  brand: "#1279BB", sector: "Technology"     },
-  { name: "Accenture",                 short: "Accenture",  brand: "#A100FF", sector: "Consulting"     },
-  { name: "IBM",                       short: "IBM",        brand: "#1F70C1", sector: "Enterprise IT"  },
-  { name: "Oracle",                    short: "Oracle",     brand: "#F80000", sector: "Enterprise SW"  },
-  { name: "Amazon",                    short: "Amazon",     brand: "#FF9900", sector: "E-Commerce"     },
-  { name: "Microsoft",                 short: "Microsoft",  brand: "#00A4EF", sector: "Cloud & SW"     },
-  { name: "Flipkart",                  short: "Flipkart",   brand: "#2874F0", sector: "E-Commerce"     },
-  { name: "Deloitte",                  short: "Deloitte",   brand: "#86BC25", sector: "Consulting"     },
-  { name: "Mphasis",                   short: "Mphasis",    brand: "#CC2233", sector: "IT Services"    },
-  { name: "Hexaware",                  short: "Hexaware",   brand: "#E1261C", sector: "Technology"     },
-  { name: "Mindtree",                  short: "Mindtree",   brand: "#007DB8", sector: "IT Services"    },
-  { name: "Paytm",                     short: "Paytm",      brand: "#00B9F1", sector: "FinTech"        },
-  { name: "Zomato",                    short: "Zomato",     brand: "#E23744", sector: "Food Tech"      },
-  { name: "Swiggy",                    short: "Swiggy",     brand: "#FC8019", sector: "Food Tech"      },
+  { name: "Tata Consultancy Services", short: "TCS",        brand: "#003087", sector: "IT Services",     domain: "tcs.com",          logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Tata_Consultancy_Services_Logo.svg/300px-Tata_Consultancy_Services_Logo.svg.png" },
+  { name: "Infosys",                   short: "Infosys",    brand: "#007CC2", sector: "IT Services",     domain: "infosys.com",      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Infosys_logo.svg/300px-Infosys_logo.svg.png" },
+  { name: "Wipro",                     short: "Wipro",      brand: "#341062", sector: "IT & Consulting", domain: "wipro.com",        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Wipro_Primary_Logo_Color_RGB.svg/300px-Wipro_Primary_Logo_Color_RGB.svg.png" },
+  { name: "HCL Technologies",          short: "HCL",        brand: "#0074B7", sector: "Technology",      domain: "hcltech.com",      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/HCL_Technologies_logo.svg/300px-HCL_Technologies_logo.svg.png" },
+  { name: "Capgemini",                 short: "Capgemini",  brand: "#0070AD", sector: "Consulting",      domain: "capgemini.com",    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Capgemini_Logo.svg/300px-Capgemini_Logo.svg.png" },
+  { name: "Tech Mahindra",             short: "Tech-M",     brand: "#C4122F", sector: "IT Services",     domain: "techmahindra.com", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/TechMahindra_newlogo.svg/300px-TechMahindra_newlogo.svg.png" },
+  { name: "Cognizant",                 short: "Cognizant",  brand: "#1279BB", sector: "Technology",      domain: "cognizant.com",    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Cognizant_logo_2022.svg/300px-Cognizant_logo_2022.svg.png" },
+  { name: "Accenture",                 short: "Accenture",  brand: "#A100FF", sector: "Consulting",      domain: "accenture.com",    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/300px-Accenture.svg.png" },
+  { name: "IBM",                       short: "IBM",        brand: "#1F70C1", sector: "Enterprise IT",   domain: "ibm.com",          logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/300px-IBM_logo.svg.png" },
+  { name: "Oracle",                    short: "Oracle",     brand: "#F80000", sector: "Enterprise SW",   domain: "oracle.com",       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/300px-Oracle_logo.svg.png" },
+  { name: "Amazon",                    short: "Amazon",     brand: "#FF9900", sector: "E-Commerce",      domain: "amazon.com",       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/300px-Amazon_logo.svg.png" },
+  { name: "Microsoft",                 short: "Microsoft",  brand: "#00A4EF", sector: "Cloud & SW",      domain: "microsoft.com",    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/300px-Microsoft_logo.svg.png" },
+  { name: "Flipkart",                  short: "Flipkart",   brand: "#2874F0", sector: "E-Commerce",      domain: "flipkart.com",     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Flipkart_logo.svg/300px-Flipkart_logo.svg.png" },
+  { name: "Deloitte",                  short: "Deloitte",   brand: "#86BC25", sector: "Consulting",      domain: "deloitte.com",     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/300px-Deloitte.svg.png" },
+  { name: "Mphasis",                   short: "Mphasis",    brand: "#CC2233", sector: "IT Services",     domain: "mphasis.com",      logo: "https://logo.clearbit.com/mphasis.com" },
+  { name: "Hexaware",                  short: "Hexaware",   brand: "#E1261C", sector: "Technology",      domain: "hexaware.com",     logo: "https://logo.clearbit.com/hexaware.com" },
+  { name: "LTIMindtree",               short: "LTI",        brand: "#007DB8", sector: "IT Services",     domain: "ltimindtree.com",  logo: "https://logo.clearbit.com/ltimindtree.com" },
+  { name: "Paytm",                     short: "Paytm",      brand: "#00B9F1", sector: "FinTech",         domain: "paytm.com",        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/300px-Paytm_Logo_%28standalone%29.svg.png" },
+  { name: "Zomato",                    short: "Zomato",     brand: "#E23744", sector: "Food Tech",       domain: "zomato.com",       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Zomato_logo.png/300px-Zomato_logo.png" },
+  { name: "Swiggy",                    short: "Swiggy",     brand: "#FC8019", sector: "Food Tech",       domain: "swiggy.com",       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Swiggy_logo.svg/300px-Swiggy_logo.svg.png" },
 ];
 
 interface Testimonial {
@@ -248,31 +250,52 @@ function FlipCard({ student }: { student: Testimonial }) {
 /* ─────────────────────────────────────────── */
 
 function CompanyCard({ company }: { company: Company }) {
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgFailed, setImgFailed] = useState(false);
+
   return (
     <motion.div
-      whileHover={{ scale: 1.05, y: -4 }}
+      whileHover={{ scale: 1.05, y: -5 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className="flex-shrink-0 w-52 h-20 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-shadow cursor-default flex items-center px-4 gap-3 group"
+      className="flex-shrink-0 w-48 h-[90px] rounded-2xl bg-white border border-gray-100 shadow-lg hover:shadow-2xl transition-all cursor-default flex flex-col items-center justify-center px-5 gap-1.5 group relative overflow-hidden"
+      style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.07)" }}
     >
-      {/* Brand colour bar on left */}
-      <div
-        className="w-1 h-10 rounded-full flex-shrink-0"
-        style={{ backgroundColor: company.brand }}
-      />
-      <div className="flex flex-col min-w-0">
+      {/* Top brand-colour bar */}
+      <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ backgroundColor: company.brand }} />
+
+      {/* Logo image — hidden until loaded; falls back to wordmark */}
+      {!imgFailed && (
+        <img
+          src={company.logo}
+          alt={company.name}
+          onLoad={() => setImgLoaded(true)}
+          onError={() => setImgFailed(true)}
+          className={`h-8 w-auto max-w-[130px] object-contain transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0 absolute"}`}
+          loading="lazy"
+        />
+      )}
+
+      {/* Wordmark shown when image isn't loaded or failed */}
+      {(!imgLoaded || imgFailed) && (
         <span
-          className="font-display font-extrabold text-base leading-tight tracking-tight truncate"
+          className="font-display font-black text-xl tracking-tight leading-none select-none"
           style={{ color: company.brand }}
         >
           {company.short}
         </span>
-        <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest truncate">
-          {company.sector}
-        </span>
-        <span className="text-[10px] text-gray-400 truncate leading-tight">{company.name}</span>
-      </div>
-      <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-        <BadgeCheck size={16} style={{ color: company.brand }} />
+      )}
+
+      {/* Sector pill */}
+      <span
+        className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full"
+        style={{ color: company.brand, backgroundColor: `${company.brand}12` }}
+      >
+        {company.sector}
+      </span>
+
+      {/* Verified tick on hover */}
+      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <BadgeCheck size={12} style={{ color: company.brand }} />
       </div>
     </motion.div>
   );
