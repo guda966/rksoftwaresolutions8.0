@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { ArrowRight, CheckCircle2, Star, Users, Briefcase, Award, TrendingUp, Code2, MonitorPlay, Bug, Target, Database, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ArrowRight, CheckCircle2, Star, Users, Briefcase, Award, TrendingUp, Code2, MonitorPlay, Bug, Target, Database, ChevronLeft, ChevronRight, Quote, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -392,6 +392,88 @@ export default function Home() {
           <FadeIn>
             <TestimonialsCarousel />
           </FadeIn>
+        </div>
+      </section>
+
+      {/* YouTube Channel Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <FadeIn className="text-center max-w-3xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 border border-red-100 px-4 py-2 rounded-full mb-4">
+              <Youtube size={16} />
+              <span className="text-sm font-semibold">Free on YouTube</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Learn from Our YouTube Channel</h2>
+            <p className="text-lg text-muted-foreground">
+              Free tutorials, course previews, placement stories, and expert tech tips — all on our official channel.
+            </p>
+          </FadeIn>
+
+          <div className="max-w-5xl mx-auto">
+            {/* Channel embed */}
+            <FadeIn delay={0.1}>
+              <div className="rounded-3xl overflow-hidden shadow-2xl border border-border mb-6 bg-black">
+                <iframe
+                  src="https://www.youtube.com/embed?listType=user_uploads&list=RKSoftwareSolutionss&rel=0&modestbranding=1"
+                  width="100%"
+                  height="460"
+                  title="RK Software Solutions — Training Videos"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="block"
+                />
+              </div>
+            </FadeIn>
+
+            {/* Channel stats */}
+            <div className="grid grid-cols-3 gap-4 mb-8">
+              {[
+                { value: "1.33K+", label: "Subscribers", icon: "👥" },
+                { value: "22",     label: "Training Videos", icon: "🎬" },
+                { value: "42K+",   label: "Total Views", icon: "👁️" },
+              ].map((stat, i) => (
+                <FadeIn key={i} delay={i * 0.1} direction="up">
+                  <div className="text-center bg-gray-50 rounded-2xl p-5 border border-border hover:border-red-200 hover:bg-red-50/50 transition-colors">
+                    <div className="text-2xl mb-1">{stat.icon}</div>
+                    <div className="text-2xl font-extrabold font-display text-primary">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+
+            {/* What's on the channel */}
+            <FadeIn delay={0.2}>
+              <div className="grid md:grid-cols-2 gap-4 mb-8">
+                {[
+                  "📚 Full course tutorials for Java, Python, Full Stack & more",
+                  "🎯 Real-time project walkthroughs",
+                  "💼 Student placement success stories",
+                  "🧠 Interview tips and aptitude preparation",
+                  "🚀 Career guidance from industry mentors",
+                  "✅ Live demo classes and doubt sessions",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm text-muted-foreground bg-gray-50 rounded-xl px-4 py-3 border border-border">
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+
+            {/* CTA */}
+            <FadeIn className="flex flex-wrap gap-4 justify-center">
+              <a href="https://www.youtube.com/@RKSoftwareSolutionss" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-6 text-base shadow-xl shadow-red-200">
+                  <Youtube size={20} className="mr-2" /> Subscribe for Free Tutorials
+                </Button>
+              </a>
+              <a href="https://www.youtube.com/@RKSoftwareSolutionss/videos" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="px-8 py-6 text-base border-red-200 text-red-600 hover:bg-red-50">
+                  Browse All 22 Videos →
+                </Button>
+              </a>
+            </FadeIn>
+          </div>
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail, ArrowRight, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 function LogoAvatar() {
@@ -42,17 +42,21 @@ export function Footer() {
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
               India's premier software training and placement institute. We bridge the gap between academic education and industry requirements to build successful careers.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-colors">
+            <div className="flex gap-3 flex-wrap">
+              <a href="https://www.youtube.com/@RKSoftwareSolutionss" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors" title="YouTube">
+                <Youtube size={18} />
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=100091978764310" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors" title="Facebook">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-colors">
-                <Twitter size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/rk_softwaresolutions/" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors" title="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/rk-software-solutions-45a144273" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-colors" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
             </div>
@@ -104,15 +108,15 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-primary-foreground/80">
                 <MapPin size={20} className="text-accent flex-shrink-0 mt-1" />
-                <span className="text-sm">Near Bus Stand, Hyderabad, Telangana — 500001, India</span>
+                <span className="text-sm">301 & 402, 3rd Floor, Opp. SR Nagar Bus Stop, Madhura Nagar, Hyderabad – 500038, Telangana</span>
               </li>
               <li className="flex items-center gap-3 text-primary-foreground/80">
                 <Phone size={20} className="text-accent flex-shrink-0" />
-                <span className="text-sm">+91-9876543210</span>
+                <a href="tel:+919063616867" className="text-sm hover:text-accent transition-colors">+91 90636 16867</a>
               </li>
               <li className="flex items-center gap-3 text-primary-foreground/80">
                 <Mail size={20} className="text-accent flex-shrink-0" />
-                <span className="text-sm">info@rksoftware.in</span>
+                <a href="mailto:info@rksoftwaresolutions.in" className="text-sm hover:text-accent transition-colors">info@rksoftwaresolutions.in</a>
               </li>
             </ul>
             <div className="mt-6">

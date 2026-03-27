@@ -117,9 +117,9 @@ export default function Contact() {
                       <div>
                         <h4 className="font-bold text-primary mb-1">Our Location</h4>
                         <p className="text-muted-foreground text-sm leading-relaxed">
-                          RK Software Solutions<br />
-                          Near Bus Stand, Hyderabad<br />
-                          Telangana — 500001, India
+                          301 & 402, 3rd Floor<br />
+                          Opp. SR Nagar Bus Stop, Madhura Nagar<br />
+                          Hyderabad – 500038, Telangana
                         </p>
                       </div>
                     </CardContent>
@@ -133,8 +133,7 @@ export default function Contact() {
                       <div>
                         <h4 className="font-bold text-primary mb-1">Phone & WhatsApp</h4>
                         <p className="text-muted-foreground text-sm leading-relaxed">
-                          +91 98765 43210<br />
-                          +91 98765 43211
+                          <a href="tel:+919063616867" className="hover:text-primary">+91 90636 16867</a>
                         </p>
                       </div>
                     </CardContent>
@@ -148,8 +147,7 @@ export default function Contact() {
                       <div>
                         <h4 className="font-bold text-primary mb-1">Email Address</h4>
                         <p className="text-muted-foreground text-sm leading-relaxed">
-                          info@rksoftware.in<br />
-                          placements@rksoftware.in
+                          <a href="mailto:info@rksoftwaresolutions.in" className="hover:text-primary">info@rksoftwaresolutions.in</a>
                         </p>
                       </div>
                     </CardContent>
@@ -345,7 +343,7 @@ export default function Contact() {
               {
                 icon: MapPin,
                 title: "Address",
-                lines: ["RK Software Solutions", "Near Bus Stand, Hyderabad", "Telangana — 500001, India"],
+                lines: ["301 & 402, 3rd Floor", "Opp. SR Nagar Bus Stop, Madhura Nagar", "Hyderabad – 500038, Telangana"],
               },
               {
                 icon: Clock,
