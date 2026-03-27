@@ -197,3 +197,28 @@
 .ticker-track:hover {
   animation-play-state: paused;
 }
+
+@keyframes logo-scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes logo-scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.logo-track-left {
+  animation: logo-scroll-left 28s linear infinite;
+  will-change: transform;
+}
+
+.logo-track-right {
+  animation: logo-scroll-right 28s linear infinite;
+  will-change: transform;
+}
+
+.logo-track-left:hover,
+.logo-track-right:hover {
+  animation-play-state: paused;
+}
