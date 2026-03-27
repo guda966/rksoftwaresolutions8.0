@@ -33,7 +33,10 @@ function TypewriterWord() {
       if (displayed.length < word.length) {
         const t = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), 80);
         return () => clearTimeout(t);
-      } else { setPaused(true); }
+      } else {
+        setPaused(true);
+        return;
+      }
     } else {
       if (displayed.length > 0) {
         const t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 45);
@@ -41,6 +44,7 @@ function TypewriterWord() {
       } else {
         setDeleting(false);
         setWordIdx((i) => (i + 1) % HERO_WORDS.length);
+        return;
       }
     }
   }, [displayed, deleting, paused, wordIdx]);
