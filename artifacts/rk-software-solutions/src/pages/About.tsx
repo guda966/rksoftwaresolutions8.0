@@ -341,20 +341,6 @@ export default function About() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-2">
-                      <a
-                        href="#"
-                        className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-border hover:border-primary/30 hover:bg-primary/5 transition-colors text-xs font-semibold text-muted-foreground hover:text-primary"
-                      >
-                        <Linkedin size={13} /> LinkedIn
-                      </a>
-                      <a
-                        href="#"
-                        className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-border hover:border-accent/40 hover:bg-accent/5 transition-colors text-xs font-semibold text-muted-foreground hover:text-accent"
-                      >
-                        <Mail size={13} /> Email
-                      </a>
-                    </div>
                   </div>
                 </motion.div>
               </FadeIn>
