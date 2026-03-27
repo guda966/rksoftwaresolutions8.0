@@ -12,16 +12,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-function NavLogoAvatar() {
+function NavLogo() {
   const [failed, setFailed] = useState(false);
   if (failed) {
-    return <span className="text-accent font-bold text-xl">RK</span>;
+    return (
+      <div className="flex flex-col min-w-0">
+        <span className="font-display font-bold text-base sm:text-xl leading-tight text-primary uppercase tracking-wide">
+          RK Software Solutions
+        </span>
+        <span className="hidden sm:block text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
+          Training & Placement Services
+        </span>
+      </div>
+    );
   }
   return (
     <img
       src={`${import.meta.env.BASE_URL}images/logo.png`}
-      alt="RK Logo"
-      className="w-full h-full object-cover"
+      alt="RK Software Solutions"
+      className="h-14 w-auto object-contain"
       onError={() => setFailed(true)}
     />
   );
@@ -204,18 +213,8 @@ export function Navbar() {
       >
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
           <Link href="/">
-            <div className="flex items-center gap-3 cursor-pointer group">
-              <div className="relative w-12 h-12 flex-shrink-0 rounded-full bg-primary flex items-center justify-center text-accent font-display font-bold text-xl overflow-hidden group-hover:shadow-lg transition-all duration-300">
-                <NavLogoAvatar />
-              </div>
-              <div className="flex flex-col min-w-0">
-                <span className="font-display font-bold text-base sm:text-xl leading-tight text-primary uppercase tracking-wide truncate">
-                  RK Software Solutions
-                </span>
-                <span className="hidden sm:block text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
-                  Training & Placement Services
-                </span>
-              </div>
+            <div className="cursor-pointer group hover:opacity-90 transition-opacity">
+              <NavLogo />
             </div>
           </Link>
 

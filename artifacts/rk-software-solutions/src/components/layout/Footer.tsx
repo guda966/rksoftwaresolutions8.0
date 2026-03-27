@@ -3,18 +3,25 @@ import { Link } from "wouter";
 import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail, ArrowRight, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-function LogoAvatar() {
+function FooterLogo() {
   const [failed, setFailed] = useState(false);
   if (failed) {
-    return <span className="text-primary font-bold text-lg">RK</span>;
+    return (
+      <div className="flex flex-col">
+        <span className="font-display font-bold text-xl text-white">RK Software Solutions</span>
+        <span className="text-[10px] uppercase tracking-widest text-accent font-semibold">Way To Success</span>
+      </div>
+    );
   }
   return (
-    <img
-      src={`${import.meta.env.BASE_URL}images/logo.png`}
-      alt="RK Logo"
-      className="w-full h-full object-cover"
-      onError={() => setFailed(true)}
-    />
+    <div className="bg-white rounded-xl px-4 py-2 inline-block shadow-lg">
+      <img
+        src={`${import.meta.env.BASE_URL}images/logo.png`}
+        alt="RK Software Solutions"
+        className="h-16 w-auto object-contain"
+        onError={() => setFailed(true)}
+      />
+    </div>
   );
 }
 
@@ -26,19 +33,7 @@ export function Footer() {
 
           {/* Brand Column */}
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden border-2 border-accent">
-                <LogoAvatar />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl text-white">
-                  RK Software Solutions
-                </span>
-                <span className="text-[10px] uppercase tracking-widest text-accent font-semibold">
-                  Way To Success
-                </span>
-              </div>
-            </div>
+            <FooterLogo />
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
               India's premier software training and placement institute. We bridge the gap between academic education and industry requirements to build successful careers.
             </p>
