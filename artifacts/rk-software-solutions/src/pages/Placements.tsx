@@ -249,95 +249,113 @@ function FlipCard({ student }: { student: Testimonial }) {
 /* COMPANY LOGO CARD                            */
 /* ─────────────────────────────────────────── */
 
-function CompanyCard({ company }: { company: Company }) {
+function CompanyLogoTile({ company, delay = 0 }: { company: Company; delay?: number }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgFailed, setImgFailed] = useState(false);
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.05, y: -5 }}
-      transition={{ type: "spring", stiffness: 300 }}
-      className="flex-shrink-0 w-48 h-[90px] rounded-2xl bg-white border border-gray-100 shadow-lg hover:shadow-2xl transition-all cursor-default flex flex-col items-center justify-center px-5 gap-1.5 group relative overflow-hidden"
-      style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.07)" }}
-    >
-      {/* Top brand-colour bar */}
-      <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ backgroundColor: company.brand }} />
-
-      {/* Logo image — hidden until loaded; falls back to wordmark */}
-      {!imgFailed && (
-        <img
-          src={company.logo}
-          alt={company.name}
-          onLoad={() => setImgLoaded(true)}
-          onError={() => setImgFailed(true)}
-          className={`h-8 w-auto max-w-[130px] object-contain transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0 absolute"}`}
-          loading="lazy"
-        />
-      )}
-
-      {/* Wordmark shown when image isn't loaded or failed */}
-      {(!imgLoaded || imgFailed) && (
-        <span
-          className="font-display font-black text-xl tracking-tight leading-none select-none"
-          style={{ color: company.brand }}
-        >
-          {company.short}
-        </span>
-      )}
-
-      {/* Sector pill */}
-      <span
-        className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full"
-        style={{ color: company.brand, backgroundColor: `${company.brand}12` }}
+    <FadeIn delay={delay}>
+      <motion.div
+        whileHover={{ scale: 1.04, y: -5 }}
+        transition={{ type: "spring", stiffness: 300, damping: 22 }}
+        className="group relative bg-white rounded-2xl flex flex-col items-center justify-between gap-2 shadow-md hover:shadow-2xl transition-shadow duration-300 cursor-default overflow-hidden"
+        style={{ padding: "20px 16px 16px" }}
       >
-        {company.sector}
-      </span>
+        {/* Brand-colour top bar */}
+        <div className="absolute top-0 left-0 right-0 h-[4px] rounded-t-2xl" style={{ backgroundColor: company.brand }} />
 
-      {/* Verified tick on hover */}
-      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-        <BadgeCheck size={12} style={{ color: company.brand }} />
-      </div>
-    </motion.div>
+        {/* Logo area */}
+        <div className="w-full flex items-center justify-center" style={{ height: 52 }}>
+          {!imgFailed && (
+            <img
+              src={company.logo}
+              alt={company.name}
+              onLoad={() => setImgLoaded(true)}
+              onError={() => setImgFailed(true)}
+              className={`max-h-[44px] w-auto max-w-[120px] object-contain transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0 absolute"}`}
+              loading="lazy"
+            />
+          )}
+          {(!imgLoaded || imgFailed) && (
+            <span
+              className="font-display font-black text-2xl tracking-tight leading-none text-center select-none"
+              style={{ color: company.brand }}
+            >
+              {company.short}
+            </span>
+          )}
+        </div>
+
+        {/* Company name */}
+        <p className="text-[11px] font-bold text-gray-700 text-center leading-snug group-hover:text-gray-900 transition-colors">
+          {company.name}
+        </p>
+
+        {/* Sector pill */}
+        <span
+          className="text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full"
+          style={{ color: company.brand, backgroundColor: `${company.brand}18` }}
+        >
+          {company.sector}
+        </span>
+
+        {/* Verified badge on hover */}
+        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <BadgeCheck size={14} style={{ color: company.brand }} />
+        </div>
+      </motion.div>
+    </FadeIn>
   );
 }
 
 /* ─────────────────────────────────────────── */
-/* LOGO MARQUEE                                 */
+/* HIRING PARTNERS GRID                        */
 /* ─────────────────────────────────────────── */
 
-function LogoMarquee() {
-  const row1 = [...companies.slice(0, 10), ...companies.slice(0, 10)];
-  const row2 = [...companies.slice(10), ...companies.slice(10)];
-
+function HiringPartnersGrid() {
   return (
-    <section className="py-20 bg-gray-50 overflow-hidden">
-      <div className="container mx-auto px-4 mb-14 text-center">
-        <FadeIn>
-          <div className="inline-flex items-center gap-2 bg-primary/5 text-primary border border-primary/10 px-4 py-2 rounded-full mb-4">
-            <Building2 size={16} />
-            <span className="text-sm font-semibold">200+ Hiring Partners</span>
+    <section className="py-24 bg-primary relative overflow-hidden">
+      {/* Dot-grid texture */}
+      <div
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "28px 28px" }}
+      />
+      {/* Glow blobs */}
+      <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+
+        {/* Header */}
+        <FadeIn className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-4 py-2 rounded-full mb-5">
+            <Building2 size={15} />
+            <span className="text-sm font-bold tracking-wide">200+ Hiring Partners</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Where Our Students Work</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our graduates are trusted by India's top IT companies and global multinationals.
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+            Where Our Students Work
+          </h2>
+          <p className="text-lg text-white/65 max-w-2xl mx-auto leading-relaxed">
+            Our graduates are trusted by India's top IT companies and global multinationals across every major tech sector.
           </p>
         </FadeIn>
-      </div>
 
-      <div className="relative mb-4">
-        <div className="flex gap-4 logo-track-left">
-          {row1.map((c, i) => <CompanyCard key={`r1-${i}`} company={c} />)}
+        {/* Company grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {companies.map((company, i) => (
+            <CompanyLogoTile key={company.name} company={company} delay={i * 0.04} />
+          ))}
         </div>
-        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
-      </div>
 
-      <div className="relative">
-        <div className="flex gap-4 logo-track-right">
-          {row2.map((c, i) => <CompanyCard key={`r2-${i}`} company={c} />)}
-        </div>
-        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+        {/* Footer caption */}
+        <FadeIn className="text-center mt-12">
+          <div className="inline-flex items-center gap-3 bg-white/8 border border-white/10 rounded-2xl px-6 py-3">
+            <BadgeCheck size={18} className="text-accent flex-shrink-0" />
+            <p className="text-white/65 text-sm">
+              Plus <span className="text-accent font-semibold">180+ more companies</span> across IT, FinTech, E-Commerce & Consulting
+            </p>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
@@ -442,8 +460,8 @@ export default function Placements() {
         </div>
       </section>
 
-      {/* Logo Marquee */}
-      <LogoMarquee />
+      {/* Hiring Partners Grid */}
+      <HiringPartnersGrid />
 
       {/* Important Note */}
       <section className="py-14 bg-white">
