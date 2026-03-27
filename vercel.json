@@ -1,5 +1,8 @@
 {
   "outputDirectory": "artifacts/rk-software-solutions/dist/public",
   "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
