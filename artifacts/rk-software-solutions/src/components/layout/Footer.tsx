@@ -135,6 +135,12 @@ export function Footer() {
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
+        <div className="mt-4 text-center text-primary-foreground/40 text-xs">
+          Designed & Developed by{" "}
+          <a href="https://www.leoaxis.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            Leoaxis Technologies Pvt. Ltd.
+          </a>
+        </div>
       </div>
     </footer>
   );
