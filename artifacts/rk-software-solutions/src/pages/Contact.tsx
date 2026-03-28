@@ -163,7 +163,7 @@ export default function Contact() {
                         <h4 className="font-bold text-primary mb-1">Office Hours</h4>
                         <p className="text-muted-foreground text-sm leading-relaxed">
                           Mon - Sat: 9:00 AM - 8:00 PM<br />
-                          Sunday: 10:00 AM - 2:00 PM
+                          Sunday: Closed
                         </p>
                       </div>
                     </CardContent>
@@ -371,7 +371,7 @@ export default function Contact() {
               {
                 icon: Clock,
                 title: "Visit Hours",
-                lines: ["Mon – Sat: 9:00 AM – 8:00 PM", "Sunday: 10:00 AM – 2:00 PM", "Walk-ins welcome anytime"],
+                lines: ["Mon – Sat: 9:00 AM – 8:00 PM", "Sunday: Closed", "Walk-ins welcome anytime"],
               },
               {
                 icon: Star,

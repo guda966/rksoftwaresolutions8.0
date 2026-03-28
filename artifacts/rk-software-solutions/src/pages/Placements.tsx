@@ -478,7 +478,6 @@ export default function Placements() {
                   "RK Software Solutions provides 100% Placement Assistance — this means we help you prepare and connect you with opportunities, not a guarantee of employment.",
                   "Job placement depends on individual performance in interviews, communication skills, and aptitude.",
                   "Students must maintain a minimum 80% attendance and complete all assigned projects to be eligible for placement support.",
-                  "We do not charge any extra placement fees. All support is fully included in your course fee.",
                   "Our placement cell remains active for 1 year post course-completion for all enrolled students.",
                 ].map((note,i) => (
                   <li key={i} className="flex items-start gap-2.5">
