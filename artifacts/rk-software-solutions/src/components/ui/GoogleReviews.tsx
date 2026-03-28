@@ -7,7 +7,7 @@ const GOOGLE_MAPS_REVIEWS_URL =
   "https://www.google.com/maps/place/RK+Software+Solutions/@17.4396746,78.4408251,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb918904b99407:0xf7b6427f4281c2fc!8m2!3d17.4396746!4d78.4408251!16s%2Fg%2F11pzrrr3g0";
 
 const GOOGLE_WRITE_REVIEW_URL =
-  "https://search.google.com/local/writereview?placeid=ChIJB5SZBImxmzkRLML4Qn92tvs";
+  "https://search.google.com/local/writereview?placeid=ChIJB5S5BImRyzsR_MKBQn9Ctvc";
 
 /* ── Review data ── */
 const reviews = [

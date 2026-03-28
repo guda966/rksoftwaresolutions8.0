@@ -141,6 +141,33 @@ const placementSteps = [
   { icon: TrendingUp,title: "Offer & Joining",   desc: "Full support from offer negotiation to day-one onboarding."   },
 ];
 
+const placementHighlights = [
+  {
+    src: `${import.meta.env.BASE_URL}images/placement_1.jpeg`,
+    title: "Recent Placement Celebrations",
+    caption:
+      "A closer look at individual congratulations posts and the milestones our learners reach when preparation turns into a real offer.",
+    badge: "Latest Wins",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    src: `${import.meta.env.BASE_URL}images/placement_2.jpeg`,
+    title: "Batch-Wide Placement Boards",
+    caption:
+      "Large-format success boards that reflect the consistency of our classroom training, mock interviews, and placement support.",
+    badge: "Placement Wall",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    src: `${import.meta.env.BASE_URL}images/placement_3.jpeg`,
+    title: "Growing Alumni Momentum",
+    caption:
+      "A wider snapshot of the student community building strong careers across multiple roles, companies, and career stages.",
+    badge: "Alumni Network",
+    aspect: "aspect-[4/5]",
+  },
+];
+
 /* ─────────────────────────────────────────── */
 /* FLIP CARD COMPONENT                          */
 /* ─────────────────────────────────────────── */
@@ -365,6 +392,54 @@ function HiringPartnersGrid() {
 /* PAGE                                         */
 /* ─────────────────────────────────────────── */
 
+function PlacementHighlightCard({
+  item,
+  delay = 0,
+}: {
+  item: (typeof placementHighlights)[number];
+  delay?: number;
+}) {
+  return (
+    <FadeIn delay={delay}>
+      <motion.article
+        whileHover={{ y: -6 }}
+        transition={{ type: "spring", stiffness: 260, damping: 24 }}
+        className="group h-full overflow-hidden rounded-[22px] border border-border/60 bg-white shadow-[0_18px_48px_-40px_rgba(15,23,42,0.24)]"
+      >
+        <div className="relative overflow-hidden bg-slate-50">
+          <div className={`overflow-hidden ${item.aspect} p-3 md:p-4`}>
+            <img
+              src={item.src}
+              alt={item.title}
+              className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+              loading="lazy"
+            />
+          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-accent/35 via-red-500/10 to-transparent" />
+          <div className="absolute left-4 top-4">
+            <span className="inline-flex items-center rounded-full border border-primary/10 bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-primary shadow-sm backdrop-blur">
+              {item.badge}
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 md:p-5">
+          <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em] text-primary/55">
+            <span>Placement Highlights</span>
+            <span className="h-px flex-1 bg-primary/10" />
+          </div>
+          <h3 className="text-base md:text-lg font-display font-bold tracking-tight text-primary">
+            {item.title}
+          </h3>
+          <p className="mt-2 text-[13px] leading-6 text-muted-foreground">
+            {item.caption}
+          </p>
+        </div>
+      </motion.article>
+    </FadeIn>
+  );
+}
+
 export default function Placements() {
   return (
     <div className="w-full bg-background min-h-screen">
@@ -524,6 +599,38 @@ export default function Placements() {
       </section>
 
       {/* YouTube Shorts — Student Success Stories */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent" />
+          <div className="absolute -top-24 right-0 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
+          <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4">
+          <FadeIn className="mx-auto mb-14 max-w-3xl text-center">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-4 py-2 text-primary">
+              <Trophy size={16} className="text-accent" />
+              <span className="text-sm font-semibold">Placement Highlights</span>
+            </div>
+            <h2 className="text-4xl font-display font-bold tracking-tight text-primary md:text-5xl">
+              Moments That Make The{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                Journey Real
+              </span>
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-muted-foreground">
+              A visual look at the placement momentum our students build through training, interview preparation, and consistent support from the RK team.
+            </p>
+          </FadeIn>
+
+          <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-3">
+            <PlacementHighlightCard item={placementHighlights[0]} delay={0.05} />
+            <PlacementHighlightCard item={placementHighlights[1]} delay={0.12} />
+            <PlacementHighlightCard item={placementHighlights[2]} delay={0.2} />
+          </div>
+        </div>
+      </section>
+
       <section className="py-24 bg-white relative overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 pointer-events-none">
