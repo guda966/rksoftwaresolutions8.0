@@ -132,23 +132,48 @@
 .dark {
   --background: 222 47% 11%;
   --foreground: 210 40% 98%;
-  --card: 222 47% 11%;
+  --card: 222 47% 15%;
   --card-foreground: 210 40% 98%;
-  --popover: 222 47% 11%;
+  --card-border: 217.2 32.6% 20%;
+  --popover: 222 47% 13%;
   --popover-foreground: 210 40% 98%;
+  --popover-border: 217.2 32.6% 20%;
   --primary: 43 96% 56%; /* Gold becomes primary in dark mode for pop */
   --primary-foreground: 231 73% 18%;
   --secondary: 217.2 32.6% 17.5%;
   --secondary-foreground: 210 40% 98%;
   --muted: 217.2 32.6% 17.5%;
   --muted-foreground: 215 20.2% 65.1%;
-  --accent: 231 73% 18%;
+  --accent: 231 73% 30%;
   --accent-foreground: 210 40% 98%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
+  --border: 217.2 32.6% 20%;
+  --input: 217.2 32.6% 20%;
   --ring: 43 96% 56%;
+
+  --sidebar: 222 47% 8%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-border: 217.2 32.6% 15%;
+  --sidebar-primary: 43 96% 56%;
+  --sidebar-primary-foreground: 231 73% 18%;
+  --sidebar-accent: 231 73% 25%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-ring: 43 96% 56%;
+
+  --elevate-1: rgba(255,255,255, .03);
+  --elevate-2: rgba(255,255,255, .06);
+  --button-outline: rgba(255,255,255, .10);
+  --badge-outline: rgba(255,255,255, .05);
+  --opaque-button-border-intensity: 8;
+
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
 @layer base {

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Phone, Mail, GraduationCap } from "lucide-react";
+import { Menu, X, GraduationCap, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 import {
   Dialog,
   DialogContent,
@@ -183,6 +184,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -208,8 +210,8 @@ export function Navbar() {
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-lg shadow-md py-3"
-            : "bg-white py-4"
+            ? "bg-background/90 backdrop-blur-lg shadow-md py-3"
+            : "bg-background py-4"
         }`}
       >
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -239,7 +241,14 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             <Button
               onClick={() => setDemoOpen(true)}
               className="bg-accent text-primary hover:bg-accent/90 font-bold px-6 shadow-lg shadow-accent/20"
@@ -258,7 +267,7 @@ export function Navbar() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-border animate-in slide-in-from-top-2">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-background shadow-xl border-t border-border animate-in slide-in-from-top-2">
             <nav className="flex flex-col px-4 py-6 gap-4">
               {navLinks.map((link) => (
                 <Link key={link.name} href={link.path}>
@@ -266,7 +275,7 @@ export function Navbar() {
                     className={`px-4 py-3 rounded-xl font-medium text-lg cursor-pointer ${
                       location === link.path
                         ? "bg-primary/5 text-primary border-l-4 border-accent"
-                        : "text-muted-foreground hover:bg-gray-50"
+                        : "text-muted-foreground hover:bg-muted"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -274,7 +283,14 @@ export function Navbar() {
                   </div>
                 </Link>
               ))}
-              <div className="pt-4 mt-2 border-t border-border">
+              <div className="pt-4 mt-2 border-t border-border flex flex-col gap-3">
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border text-muted-foreground hover:text-primary hover:bg-muted transition-colors font-medium text-base"
+                >
+                  {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                  {theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                </button>
                 <Button
                   className="w-full bg-accent text-primary py-6 text-lg font-bold"
                   onClick={() => {
