@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Phone, Mail, GraduationCap } from "lucide-react";
+import { Menu, X, GraduationCap, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,10 +15,13 @@ import { Label } from "@/components/ui/label";
 
 function NavLogo() {
   const [failed, setFailed] = useState(false);
+  const { theme } = useTheme();
+
   if (failed) {
     return (
       <div className="flex flex-col min-w-0">
-        <span className="font-display font-bold text-base sm:text-xl leading-tight text-primary uppercase tracking-wide">
+        <span className="font-display font-bold text-base sm:text-xl leading-tight uppercase tracking-wide"
+          style={{ color: theme === "dark" ? "hsl(43 96% 60%)" : undefined }}>
           RK Software Solutions
         </span>
         <span className="hidden sm:block text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
@@ -27,12 +31,14 @@ function NavLogo() {
     );
   }
   return (
-    <img
-      src={`${import.meta.env.BASE_URL}images/logo.png`}
-      alt="RK Software Solutions"
-      className="h-14 w-auto object-contain"
-      onError={() => setFailed(true)}
-    />
+    <div className={`rounded-xl overflow-hidden ${theme === "dark" ? "bg-white p-1" : ""}`}>
+      <img
+        src={`${import.meta.env.BASE_URL}images/logo.png`}
+        alt="RK Software Solutions"
+        className="h-16 w-auto object-contain"
+        onError={() => setFailed(true)}
+      />
+    </div>
   );
 }
 
@@ -183,6 +189,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -208,8 +215,8 @@ export function Navbar() {
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-lg shadow-md py-3"
-            : "bg-white py-4"
+            ? "bg-background/90 backdrop-blur-lg shadow-md py-3"
+            : "bg-background py-4"
         }`}
       >
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -239,10 +246,28 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              aria-label="Toggle theme"
+              style={theme === "dark" ? {
+                border: "1px solid rgba(245,197,24,0.6)",
+                color: "hsl(43 96% 56%)",
+                background: "rgba(245,197,24,0.12)",
+                boxShadow: "0 0 14px rgba(245,197,24,0.35)"
+              } : {}}
+              className={`p-2.5 rounded-full border transition-all duration-300 ${
+                theme === "dark"
+                  ? ""
+                  : "border-border text-muted-foreground hover:text-primary hover:bg-muted"
+              }`}
+            >
+              {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+            </button>
             <Button
               onClick={() => setDemoOpen(true)}
-              className="bg-accent text-primary hover:bg-accent/90 font-bold px-6 shadow-lg shadow-accent/20"
+              style={{ color: "hsl(231 73% 12%)", fontWeight: 700 }}
+              className="bg-accent hover:bg-accent/90 px-6 shadow-lg shadow-accent/20"
             >
               Get Free Demo
             </Button>
@@ -258,7 +283,7 @@ export function Navbar() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-border animate-in slide-in-from-top-2">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-background shadow-xl border-t border-border animate-in slide-in-from-top-2">
             <nav className="flex flex-col px-4 py-6 gap-4">
               {navLinks.map((link) => (
                 <Link key={link.name} href={link.path}>
@@ -266,7 +291,7 @@ export function Navbar() {
                     className={`px-4 py-3 rounded-xl font-medium text-lg cursor-pointer ${
                       location === link.path
                         ? "bg-primary/5 text-primary border-l-4 border-accent"
-                        : "text-muted-foreground hover:bg-gray-50"
+                        : "text-muted-foreground hover:bg-muted"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -274,7 +299,18 @@ export function Navbar() {
                   </div>
                 </Link>
               ))}
-              <div className="pt-4 mt-2 border-t border-border">
+              <div className="pt-4 mt-2 border-t border-border flex flex-col gap-3">
+                <button
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all font-medium text-base ${
+                    theme === "dark"
+                      ? "border-accent/40 text-accent bg-accent/10 shadow-[0_0_10px_rgba(245,197,24,0.2)]"
+                      : "border-border text-muted-foreground hover:text-primary hover:bg-muted"
+                  }`}
+                >
+                  {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                  {theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                </button>
                 <Button
                   className="w-full bg-accent text-primary py-6 text-lg font-bold"
                   onClick={() => {

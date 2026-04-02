@@ -129,6 +129,75 @@
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
+.dark {
+  /* ── Midnight Gold ── */
+  --button-outline: rgba(245, 197, 24, .15);
+  --badge-outline: rgba(245, 197, 24, .08);
+  --opaque-button-border-intensity: 8;
+  --elevate-1: rgba(245, 197, 24, .03);
+  --elevate-2: rgba(245, 197, 24, .06);
+
+  /* Deep rich black base */
+  --background: 240 10% 4%;
+  --foreground: 45 30% 92%;
+
+  --border: 240 8% 14%;
+  --input: 240 8% 14%;
+  --ring: 43 96% 56%;
+
+  /* Cards: dark navy tint */
+  --card: 231 25% 9%;
+  --card-foreground: 45 30% 92%;
+  --card-border: 231 20% 16%;
+
+  --popover: 231 25% 7%;
+  --popover-foreground: 45 30% 92%;
+  --popover-border: 231 20% 16%;
+
+  /* Navy stays navy for hero/CTA sections */
+  --primary: 231 73% 18%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 231 20% 12%;
+  --secondary-foreground: 45 30% 92%;
+
+  --muted: 231 20% 12%;
+  --muted-foreground: 45 15% 55%;
+
+  /* Gold is the star in dark mode */
+  --accent: 43 96% 56%;
+  --accent-foreground: 231 73% 10%;
+
+  --destructive: 0 65% 48%;
+  --destructive-foreground: 45 30% 92%;
+
+  --sidebar: 240 10% 3%;
+  --sidebar-foreground: 45 30% 92%;
+  --sidebar-border: 231 20% 12%;
+  --sidebar-primary: 43 96% 56%;
+  --sidebar-primary-foreground: 231 73% 10%;
+  --sidebar-accent: 231 20% 12%;
+  --sidebar-accent-foreground: 45 30% 92%;
+  --sidebar-ring: 43 96% 56%;
+
+  --shadow-2xs: 0px 1px 2px 0px rgba(245,197,24,0.04);
+  --shadow-xs: 0px 2px 4px 0px rgba(245,197,24,0.05);
+  --shadow-sm: 0px 4px 8px 0px rgba(245,197,24,0.06);
+  --shadow: 0px 10px 15px -3px rgba(245,197,24,0.07);
+  --shadow-md: 0px 15px 20px -5px rgba(245,197,24,0.08);
+  --shadow-lg: 0px 20px 25px -5px rgba(245,197,24,0.10);
+  --shadow-xl: 0px 25px 30px -10px rgba(245,197,24,0.12);
+  --shadow-2xl: 0px 30px 40px -15px rgba(245,197,24,0.15);
+
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -145,6 +214,92 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     @apply font-bold tracking-tight text-primary;
+  }
+
+  /* ── Midnight Gold dark mode overrides ── */
+
+  /* Hardcoded white sections → deep dark navy (exclude header/navbar) */
+  .dark .bg-white:not(header):not(header *) {
+    background-color: hsl(231 25% 9%) !important;
+    color: hsl(45 30% 92%);
+  }
+
+  /* Section alternates */
+  .dark .bg-secondary\/40,
+  .dark .bg-secondary\/30 {
+    background-color: hsl(231 20% 7%) !important;
+  }
+
+  /* Slate used in placement image area */
+  .dark .bg-slate-50 {
+    background-color: hsl(231 20% 12%) !important;
+  }
+
+  /* Cards get a subtle gold border glow */
+  .dark .shadow-xl,
+  .dark .shadow-2xl {
+    box-shadow: 0 0 0 1px rgba(245,197,24,0.08), 0 20px 40px -10px rgba(0,0,0,0.6) !important;
+  }
+
+  /* All headings: navy → warm off-white with gold glow */
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: hsl(45 40% 90%) !important;
+    text-shadow: 0 0 40px rgba(245, 197, 24, 0.12);
+  }
+
+  /* Headings inside navy sections stay pure white */
+  .dark .bg-primary h1, .dark .bg-primary h2, .dark .bg-primary h3,
+  .dark .bg-primary h4, .dark .bg-primary h5, .dark .bg-primary h6 {
+    color: hsl(0 0% 100%) !important;
+    text-shadow: none;
+  }
+
+  /* Muted text — warm dim */
+  .dark .text-muted-foreground {
+    color: hsl(45 15% 55%) !important;
+  }
+
+  /* text-primary on non-navy-bg elements → warm white */
+  .dark .text-primary {
+    color: hsl(45 40% 88%) !important;
+  }
+
+  /* text-primary inside navy sections stays white */
+  .dark .bg-primary .text-primary {
+    color: hsl(0 0% 100%) !important;
+  }
+
+  /* Nav active link → gold */
+  .dark nav .text-primary {
+    color: hsl(43 96% 60%) !important;
+  }
+
+  /* Logo image — preserve original, no tint */
+  .dark header img {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    opacity: 1 !important;
+  }
+
+  /* Logo fallback text → gold */
+  .dark header .text-primary {
+    color: hsl(43 96% 60%) !important;
+  }
+
+  /* "Get Free Demo" button text — handled via inline style in Navbar */
+
+  /* Gold ambient glow on body */
+  .dark body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(245,197,24,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
   }
 }
 
