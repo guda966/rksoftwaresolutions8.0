@@ -224,15 +224,51 @@
     color: hsl(45 30% 92%);
   }
 
+  /* Gray section backgrounds */
+  .dark .bg-gray-50,
+  .dark .bg-gray-100 {
+    background-color: hsl(231 20% 11%) !important;
+  }
+
+  /* Amber/warning note card */
+  .dark .bg-amber-50 {
+    background-color: hsl(35 30% 10%) !important;
+  }
+  .dark .border-amber-300 {
+    border-color: hsl(43 60% 30%) !important;
+  }
+  .dark .text-amber-900,
+  .dark .text-amber-800 {
+    color: hsl(43 80% 75%) !important;
+  }
+  .dark .bg-amber-100 {
+    background-color: hsl(43 30% 15%) !important;
+  }
+  .dark .text-amber-600 {
+    color: hsl(43 90% 60%) !important;
+  }
+
   /* Section alternates */
   .dark .bg-secondary\/40,
-  .dark .bg-secondary\/30 {
+  .dark .bg-secondary\/30,
+  .dark .bg-secondary\/20 {
     background-color: hsl(231 20% 7%) !important;
   }
 
   /* Slate used in placement image area */
   .dark .bg-slate-50 {
     background-color: hsl(231 20% 12%) !important;
+  }
+
+  /* Course card approach box */
+  .dark .bg-gray-50[class*="border-l-4"] {
+    background-color: hsl(231 20% 12%) !important;
+  }
+
+  /* Hardcoded gray text in company tiles */
+  .dark .text-gray-700,
+  .dark .text-gray-900 {
+    color: hsl(45 20% 75%) !important;
   }
 
   /* Cards get a subtle gold border glow */
@@ -247,9 +283,11 @@
     text-shadow: 0 0 40px rgba(245, 197, 24, 0.12);
   }
 
-  /* Headings inside navy sections stay pure white */
+  /* Headings inside navy/accent sections stay white */
   .dark .bg-primary h1, .dark .bg-primary h2, .dark .bg-primary h3,
-  .dark .bg-primary h4, .dark .bg-primary h5, .dark .bg-primary h6 {
+  .dark .bg-primary h4, .dark .bg-primary h5, .dark .bg-primary h6,
+  .dark .bg-accent h1, .dark .bg-accent h2, .dark .bg-accent h3,
+  .dark .bg-accent h4, .dark .bg-accent h5, .dark .bg-accent h6 {
     color: hsl(0 0% 100%) !important;
     text-shadow: none;
   }
@@ -264,8 +302,9 @@
     color: hsl(45 40% 88%) !important;
   }
 
-  /* text-primary inside navy sections stays white */
-  .dark .bg-primary .text-primary {
+  /* text-primary inside navy/accent sections stays white */
+  .dark .bg-primary .text-primary,
+  .dark .bg-accent .text-primary {
     color: hsl(0 0% 100%) !important;
   }
 
@@ -286,7 +325,10 @@
     color: hsl(43 96% 60%) !important;
   }
 
-  /* "Get Free Demo" button text — handled via inline style in Navbar */
+  /* Borders adapt */
+  .dark .border-border {
+    border-color: hsl(231 20% 16%) !important;
+  }
 
   /* Gold ambient glow on body */
   .dark body::before {
@@ -314,6 +356,77 @@
   
   .hover-elevate:hover {
     @apply -translate-y-1 shadow-lg;
+  }
+
+  /* ── Mobile-first global fixes ── */
+
+  /* Prevent horizontal overflow on all screens */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Tighten section vertical padding on mobile */
+  @media (max-width: 640px) {
+    section {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
+    }
+
+    /* Hero section keeps more space */
+    section:first-of-type {
+      padding-top: 2rem !important;
+      padding-bottom: 5rem !important;
+    }
+
+    /* Reduce heading sizes on mobile */
+    h1 { font-size: clamp(1.75rem, 8vw, 3rem) !important; }
+    h2 { font-size: clamp(1.5rem, 6vw, 2.5rem) !important; }
+
+    /* Tighter gaps in grids */
+    .gap-12 { gap: 1.5rem !important; }
+    .gap-16 { gap: 2rem !important; }
+    .mb-14  { margin-bottom: 2rem !important; }
+    .mb-12  { margin-bottom: 1.75rem !important; }
+
+    /* Emoji rendering — force text rendering */
+    .text-accent, span, p, h1, h2, h3, h4 {
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Footer grid — single column, tighter */
+    footer .grid {
+      gap: 2rem !important;
+    }
+
+    /* Stats cards — smaller padding on mobile */
+    .grid.grid-cols-2 > * {
+      padding: 1rem !important;
+    }
+
+    /* Testimonial card padding */
+    .p-8, .p-12 {
+      padding: 1.25rem !important;
+    }
+
+    /* Trust badge pills — wrap properly */
+    .flex-wrap {
+      flex-wrap: wrap !important;
+    }
+
+    /* WhatsApp button — smaller on mobile */
+    .fixed.bottom-6.right-6 a span.w-16 {
+      width: 3.25rem !important;
+      height: 3.25rem !important;
+    }
+  }
+
+  /* Tablet tweaks */
+  @media (min-width: 641px) and (max-width: 1023px) {
+    section {
+      padding-top: 4rem !important;
+      padding-bottom: 4rem !important;
+    }
   }
 }
 

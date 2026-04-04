@@ -35,7 +35,7 @@ function NavLogo() {
       <img
         src={`${import.meta.env.BASE_URL}images/logo.png`}
         alt="RK Software Solutions"
-        className="h-16 w-auto object-contain"
+        className="h-12 sm:h-16 w-auto object-contain"
         onError={() => setFailed(true)}
       />
     </div>
@@ -274,25 +274,34 @@ export function Navbar() {
           </div>
 
           <button
-            className="lg:hidden text-primary p-2"
+            className="lg:hidden p-2 transition-colors"
+            style={{ color: theme === "dark" ? "hsl(43 96% 60%)" : undefined }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
 
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 w-full bg-background shadow-xl border-t border-border animate-in slide-in-from-top-2">
-            <nav className="flex flex-col px-4 py-6 gap-4">
+            <nav className="flex flex-col px-4 py-6 gap-2">
               {navLinks.map((link) => (
                 <Link key={link.name} href={link.path}>
                   <div
-                    className={`px-4 py-3 rounded-xl font-medium text-lg cursor-pointer ${
+                    className={`px-4 py-3 rounded-xl font-medium text-base cursor-pointer transition-colors ${
                       location === link.path
-                        ? "bg-primary/5 text-primary border-l-4 border-accent"
-                        : "text-muted-foreground hover:bg-muted"
+                        ? "border-l-4 border-accent"
+                        : "hover:bg-muted"
                     }`}
+                    style={{
+                      color: location === link.path
+                        ? theme === "dark" ? "hsl(43 96% 60%)" : "hsl(231 73% 18%)"
+                        : undefined,
+                      backgroundColor: location === link.path
+                        ? theme === "dark" ? "rgba(245,197,24,0.08)" : "rgba(231,73,18,0.05)"
+                        : undefined,
+                    }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -302,17 +311,22 @@ export function Navbar() {
               <div className="pt-4 mt-2 border-t border-border flex flex-col gap-3">
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  style={theme === "dark" ? {
+                    border: "1px solid rgba(245,197,24,0.5)",
+                    color: "hsl(43 96% 56%)",
+                    background: "rgba(245,197,24,0.10)",
+                    boxShadow: "0 0 10px rgba(245,197,24,0.2)"
+                  } : {}}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all font-medium text-base ${
-                    theme === "dark"
-                      ? "border-accent/40 text-accent bg-accent/10 shadow-[0_0_10px_rgba(245,197,24,0.2)]"
-                      : "border-border text-muted-foreground hover:text-primary hover:bg-muted"
+                    theme === "dark" ? "" : "border-border text-muted-foreground hover:text-primary hover:bg-muted"
                   }`}
                 >
                   {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
                   {theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
                 </button>
                 <Button
-                  className="w-full bg-accent text-primary py-6 text-lg font-bold"
+                  style={{ color: "hsl(231 73% 12%)", fontWeight: 700 }}
+                  className="w-full bg-accent hover:bg-accent/90 py-6 text-lg"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setDemoOpen(true);

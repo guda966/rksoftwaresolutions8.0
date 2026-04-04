@@ -56,10 +56,10 @@ export function JobAlertPopup() {
             transition={{ type: "spring", stiffness: 320, damping: 28 }}
             className="fixed z-[70] inset-0 flex items-center justify-center px-4 pointer-events-none"
           >
-            <div className="pointer-events-auto w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div className="pointer-events-auto w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden mx-4">
 
               {/* Navy header */}
-              <div className="relative bg-primary px-7 pt-8 pb-10 overflow-hidden text-white">
+              <div className="relative bg-primary px-5 sm:px-7 pt-6 sm:pt-8 pb-8 sm:pb-10 overflow-hidden text-white">
                 {/* Dot texture */}
                 <div
                   className="absolute inset-0 opacity-[0.07] pointer-events-none"
@@ -97,7 +97,7 @@ export function JobAlertPopup() {
               </div>
 
               {/* Body */}
-              <div className="px-7 py-6">
+              <div className="px-5 sm:px-7 py-5 sm:py-6">
                 {done ? (
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}

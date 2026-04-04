@@ -136,8 +136,9 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-4 text-center text-primary-foreground/40 text-xs">
-          Designed & Developed by{" "}
-          <a href="https://www.leoaxis.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+          Developed with ❤️ and maintained by{" "}
+          <a href="https://www.leoaxis.com" target="_blank" rel="noopener noreferrer"
+            className="font-bold underline underline-offset-2 text-accent hover:text-white transition-colors">
             Leoaxis Technologies Pvt. Ltd.
           </a>
         </div>
