@@ -94,7 +94,7 @@
   --muted: 210 40% 96%;
   --muted-foreground: 215 16% 47%;
 
-  --accent: 43 96% 56%; /* Gold/Amber */
+  --accent: 43 90% 45%; /* Darker gold for better contrast on light bg */
   --accent-foreground: 231 73% 18%;
 
   --destructive: 0 84% 60%;
