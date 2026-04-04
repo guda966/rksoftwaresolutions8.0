@@ -52,7 +52,7 @@ export default function About() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <FadeIn>
-            <Badge className="bg-accent/20 text-accent border-accent/30 mb-6 text-sm font-bold px-4 py-1.5">
+            <Badge className="bg-accent/15 text-accent border-accent/60 mb-6 text-sm font-bold px-4 py-1.5 shadow-[0_0_10px_rgba(245,197,24,0.15)]">
               Est. 2020 · Hyderabad, India
             </Badge>
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-5 text-white leading-tight">
@@ -153,7 +153,7 @@ export default function About() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <FadeIn className="text-center mb-16">
-            <Badge className="bg-accent/20 text-accent border-accent/30 mb-5">Since 2020</Badge>
+            <Badge className="bg-accent/15 text-accent border-accent/60 mb-5 shadow-[0_0_10px_rgba(245,197,24,0.15)]">Since 2020</Badge>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">Our Journey</h2>
             <p className="text-lg text-white/65 max-w-xl mx-auto">
               From a single batch in Hyderabad to shaping thousands of careers across India.

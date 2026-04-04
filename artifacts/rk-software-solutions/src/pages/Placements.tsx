@@ -393,7 +393,7 @@ function HiringPartnersGrid() {
 
         {/* Header */}
         <FadeIn className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-4 py-2 rounded-full mb-5">
+          <div className="inline-flex items-center gap-2 bg-accent/15 text-accent border border-accent/60 px-4 py-2 rounded-full mb-5 max-w-fit mx-auto shadow-[0_0_10px_rgba(245,197,24,0.15)]">
             <Building2 size={15} />
             <span className="text-sm font-bold tracking-wide">200+ Hiring Partners</span>
           </div>
@@ -494,7 +494,7 @@ export default function Placements() {
           <FadeIn>
             <motion.div initial={{ scale:0 }} animate={{ scale:1 }}
               transition={{ type:"spring", stiffness:200, delay:0.2 }}
-              className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-5 py-2.5 rounded-full mb-8 max-w-fit mx-auto">
+              className="inline-flex items-center gap-2 bg-accent/15 text-accent border border-accent/60 px-5 py-2.5 rounded-full mb-8 max-w-fit mx-auto shadow-[0_0_12px_rgba(245,197,24,0.2)]">
               <Trophy size={18} />
               <span className="font-semibold text-sm">Proven Placement Record Since 2015</span>
             </motion.div>

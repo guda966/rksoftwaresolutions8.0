@@ -332,7 +332,7 @@ export default function Contact() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <FadeIn className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-4 py-2 rounded-full mb-5 max-w-fit mx-auto">
+            <div className="inline-flex items-center gap-2 bg-accent/15 text-accent border border-accent/60 px-4 py-2 rounded-full mb-5 max-w-fit mx-auto shadow-[0_0_10px_rgba(245,197,24,0.15)]">
               <MapPin size={16} />
               <span className="text-sm font-semibold">See Our Institute</span>
             </div>

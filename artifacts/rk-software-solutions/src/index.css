@@ -305,6 +305,15 @@
     color: hsl(43 96% 65%) !important;
   }
 
+  /* Badge/pill tags inside navy sections — crisp gold outline style */
+  .bg-primary .bg-accent\/20,
+  .bg-primary [class*="bg-accent/2"],
+  .bg-primary [class*="bg-accent/1"] {
+    background-color: rgba(245, 197, 24, 0.12) !important;
+    border-color: rgba(245, 197, 24, 0.5) !important;
+    color: hsl(43 90% 55%) !important;
+  }
+
   /* Global: inline-flex pill badges never go full width */
   div.inline-flex.rounded-full,
   span.inline-flex.rounded-full {

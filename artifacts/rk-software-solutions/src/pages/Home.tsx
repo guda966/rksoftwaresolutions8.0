@@ -354,7 +354,7 @@ export default function Home() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <FadeIn className="text-center mb-14">
-            <Badge className="bg-accent/20 text-accent border-accent/30 mb-5">Your Success Blueprint</Badge>
+            <Badge className="bg-accent/15 text-accent border-accent/60 mb-5 shadow-[0_0_10px_rgba(245,197,24,0.15)]">Your Success Blueprint</Badge>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-3">How It Works</h2>
             <p className="text-white/65 text-lg max-w-xl mx-auto">Four simple steps from zero to job-ready.</p>
           </FadeIn>
@@ -509,7 +509,7 @@ export default function Home() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <FadeIn>
-            <Badge className="bg-accent/20 text-accent border-accent/30 mb-6">Limited Seats per Batch</Badge>
+            <Badge className="bg-accent/15 text-accent border-accent/60 mb-6 shadow-[0_0_10px_rgba(245,197,24,0.15)]">Limited Seats per Batch</Badge>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-5">
               Start Your Journey Today
             </h2>
