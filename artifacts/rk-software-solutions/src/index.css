@@ -297,6 +297,21 @@
     text-shadow: none;
   }
 
+  /* Prevent accent badge pills from stretching full-width on mobile */
+  .dark .bg-primary .bg-accent\/20,
+  .dark .bg-primary [class*="bg-accent/"] {
+    background-color: transparent !important;
+    border-color: rgba(245, 197, 24, 0.4) !important;
+    color: hsl(43 96% 65%) !important;
+  }
+
+  /* Global: inline-flex pill badges never go full width */
+  div.inline-flex.rounded-full,
+  span.inline-flex.rounded-full {
+    width: fit-content !important;
+    max-width: 100% !important;
+  }
+
   /* Muted text — warm dim */
   .dark .text-muted-foreground {
     color: hsl(45 15% 55%) !important;

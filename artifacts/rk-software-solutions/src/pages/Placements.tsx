@@ -456,7 +456,7 @@ export default function Placements() {
           <FadeIn>
             <motion.div initial={{ scale:0 }} animate={{ scale:1 }}
               transition={{ type:"spring", stiffness:200, delay:0.2 }}
-              className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-5 py-2.5 rounded-full mb-8">
+              className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-5 py-2.5 rounded-full mb-8 max-w-fit mx-auto">
               <Trophy size={18} />
               <span className="font-semibold text-sm">Proven Placement Record Since 2015</span>
             </motion.div>

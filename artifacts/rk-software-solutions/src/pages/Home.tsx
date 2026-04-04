@@ -53,8 +53,7 @@ function TypewriterWord() {
     <span className="block">
       <span className="text-accent relative inline-block">
         {displayed || "\u00A0"}
-        <span className="inline-block w-[3px] h-[0.85em] bg-accent ml-1 align-middle animate-pulse rounded-sm" />
-        <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/30 -z-10 rounded-full pointer-events-none" />
+        <span className="inline-block w-[2px] h-[0.8em] bg-accent ml-0.5 align-middle animate-pulse rounded-sm" />
       </span>
     </span>
   );
@@ -219,9 +218,10 @@ export default function Home() {
             {/* Left: Hero Text */}
             <div className="flex-1 min-w-0">
               <FadeIn direction="up">
-                <Badge className="bg-accent/20 text-accent border-accent/30 hover:bg-accent/30 text-xs sm:text-sm mb-6 px-3 py-1 sm:px-4 sm:py-1.5 backdrop-blur-sm inline-flex w-auto">
+                <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold mb-6 px-3 py-1.5 rounded-full border backdrop-blur-sm"
+                  style={{ backgroundColor: "rgba(245,197,24,0.15)", color: "hsl(43 96% 60%)", borderColor: "rgba(245,197,24,0.3)" }}>
                   ✦ WAY TO SUCCESS
-                </Badge>
+                </span>
               </FadeIn>
 
               <FadeIn direction="up" delay={0.1}>

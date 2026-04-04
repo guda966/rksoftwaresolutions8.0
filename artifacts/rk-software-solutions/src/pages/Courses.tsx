@@ -327,7 +327,7 @@ export default function Courses() {
         <div className="absolute -bottom-16 -left-16 w-56 h-56 bg-white/5 rounded-full blur-3xl" />
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <FadeIn>
-            <div className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-4 py-2 rounded-full mb-6 text-sm font-bold">
+            <div className="inline-flex items-center gap-2 bg-accent/20 text-accent border border-accent/30 px-4 py-2 rounded-full mb-6 text-sm font-bold max-w-fit mx-auto">
               🎓 Job-Ready in 30–60 Days
             </div>
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-4 text-white">
