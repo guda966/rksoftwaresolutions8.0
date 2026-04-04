@@ -213,11 +213,16 @@ function FlipCard({ student }: { student: Testimonial }) {
 
             {/* Placed at */}
             <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: student.brand }} />
+              <div className="flex items-center gap-2">
+                <img
+                  src={`https://img.logo.dev/${student.company.toLowerCase().replace(/\s+/g, '')}.com?token=pk_D3Oy5HHoRsKMHMmzFMGXEA&size=40`}
+                  alt={student.company}
+                  className="h-5 w-auto object-contain"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                />
                 <span className="text-sm font-bold text-primary">{student.company}</span>
               </div>
-              <span className="text-xs text-muted-foreground italic">Hover to flip →</span>
+              <span className="text-xs text-muted-foreground italic">Tap to flip →</span>
             </div>
           </div>
         </div>
