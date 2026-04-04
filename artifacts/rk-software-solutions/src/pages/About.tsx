@@ -215,8 +215,8 @@ export default function About() {
               <Card className="h-full bg-white border-none shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div className="h-[5px] bg-primary w-full" />
                 <CardContent className="p-10">
-                  <div className="w-16 h-16 bg-primary/8 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors text-primary">
-                    <Target size={30} />
+                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                    <Target size={30} className="text-accent" />
                   </div>
                   <h3 className="text-2xl font-display font-bold mb-4 text-primary">Our Mission</h3>
                   <p className="text-muted-foreground leading-relaxed">
