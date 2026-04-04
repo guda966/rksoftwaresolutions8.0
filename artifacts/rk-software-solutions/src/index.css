@@ -297,8 +297,8 @@
     color: hsl(45 15% 55%) !important;
   }
 
-  /* text-primary on non-navy-bg elements → warm white */
-  .dark .text-primary {
+  /* text-primary on card/page content → warm white (dark mode only) */
+  .dark .text-primary:not(footer *):not(button):not(a):not(header *):not(.bg-primary *):not(.bg-accent *) {
     color: hsl(45 40% 88%) !important;
   }
 
@@ -309,7 +309,7 @@
   }
 
   /* Nav active link → gold */
-  .dark nav .text-primary {
+  .dark nav span.text-primary {
     color: hsl(43 96% 60%) !important;
   }
 
@@ -379,45 +379,20 @@
       padding-bottom: 5rem !important;
     }
 
-    /* Reduce heading sizes on mobile */
-    h1 { font-size: clamp(1.75rem, 8vw, 3rem) !important; }
-    h2 { font-size: clamp(1.5rem, 6vw, 2.5rem) !important; }
-
     /* Tighter gaps in grids */
     .gap-12 { gap: 1.5rem !important; }
     .gap-16 { gap: 2rem !important; }
     .mb-14  { margin-bottom: 2rem !important; }
     .mb-12  { margin-bottom: 1.75rem !important; }
 
-    /* Emoji rendering — force text rendering */
-    .text-accent, span, p, h1, h2, h3, h4 {
-      -webkit-font-smoothing: antialiased;
-    }
-
     /* Footer grid — single column, tighter */
     footer .grid {
       gap: 2rem !important;
     }
 
-    /* Stats cards — smaller padding on mobile */
-    .grid.grid-cols-2 > * {
-      padding: 1rem !important;
-    }
-
-    /* Testimonial card padding */
-    .p-8, .p-12 {
-      padding: 1.25rem !important;
-    }
-
     /* Trust badge pills — wrap properly */
     .flex-wrap {
       flex-wrap: wrap !important;
-    }
-
-    /* WhatsApp button — smaller on mobile */
-    .fixed.bottom-6.right-6 a span.w-16 {
-      width: 3.25rem !important;
-      height: 3.25rem !important;
     }
   }
 

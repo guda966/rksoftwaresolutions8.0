@@ -39,19 +39,19 @@ export function Footer() {
             </p>
             <div className="flex gap-3 flex-wrap">
               <a href="https://www.youtube.com/@RKSoftwareSolutionss" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors" title="YouTube">
+                className="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors" title="YouTube">
                 <Youtube size={18} />
               </a>
               <a href="https://www.facebook.com/profile.php?id=100091978764310" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors" title="Facebook">
+                className="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors" title="Facebook">
                 <Facebook size={18} />
               </a>
               <a href="https://www.instagram.com/rk_softwaresolutions/" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors" title="Instagram">
+                className="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors" title="Instagram">
                 <Instagram size={18} />
               </a>
               <a href="https://www.linkedin.com/in/rk-software-solutions-45a144273" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-colors" title="LinkedIn">
+                className="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center hover:bg-blue-700 hover:text-white transition-colors" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
             </div>
