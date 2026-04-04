@@ -112,8 +112,8 @@ export default function Contact() {
                 <div className="space-y-6">
                   <Card className="border-none shadow-md bg-white">
                     <CardContent className="p-6 flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center flex-shrink-0">
-                        <MapPin size={24} />
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                        <MapPin size={22} className="text-accent" />
                       </div>
                       <div>
                         <h4 className="font-bold text-primary mb-1">Our Location</h4>
@@ -128,8 +128,8 @@ export default function Contact() {
 
                   <Card className="border-none shadow-md bg-white">
                     <CardContent className="p-6 flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center flex-shrink-0">
-                        <Phone size={24} />
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                        <Phone size={22} className="text-accent" />
                       </div>
                       <div>
                         <h4 className="font-bold text-primary mb-1">Phone & WhatsApp</h4>
@@ -142,8 +142,8 @@ export default function Contact() {
 
                   <Card className="border-none shadow-md bg-white">
                     <CardContent className="p-6 flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center flex-shrink-0">
-                        <Mail size={24} />
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                        <Mail size={22} className="text-accent" />
                       </div>
                       <div>
                         <h4 className="font-bold text-primary mb-1">Email Address</h4>
@@ -156,8 +156,8 @@ export default function Contact() {
 
                   <Card className="border-none shadow-md bg-white">
                     <CardContent className="p-6 flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center flex-shrink-0">
-                        <Clock size={24} />
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                        <Clock size={22} className="text-accent" />
                       </div>
                       <div>
                         <h4 className="font-bold text-primary mb-1">Office Hours</h4>
