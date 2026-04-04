@@ -333,8 +333,8 @@ export default function Home() {
                   transition={{ type: "spring", stiffness: 300 }}
                   className="bg-white rounded-2xl shadow-xl shadow-primary/5 p-6 md:p-8 flex flex-col items-center text-center border border-border/50 hover:border-accent/30 transition-colors"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4 text-accent">
-                    <stat.icon size={28} />
+                  <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center mb-4">
+                    <stat.icon size={26} className="text-accent" />
                   </div>
                   <h3 className="text-3xl md:text-4xl font-display font-bold text-primary mb-1">
                     <AnimatedCounter target={stat.target} suffix={stat.suffix} />
