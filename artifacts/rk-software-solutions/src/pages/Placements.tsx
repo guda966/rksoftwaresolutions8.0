@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Trophy, Star, Building2, CheckCircle2,
@@ -9,6 +9,40 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+
+/* ─────────────────────────────────────────── */
+/* ANIMATED COUNTER                             */
+/* ─────────────────────────────────────────── */
+
+function AnimatedCounter({ target, suffix, duration = 2000 }: { target: number; suffix: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        const startTime = performance.now();
+        const animate = (now: number) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = eased * target;
+          setCount(target % 1 !== 0 ? Math.round(current * 10) / 10 : Math.floor(current));
+          if (progress < 1) requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
+      }
+    }, { threshold: 0.3 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
 
 /* ─────────────────────────────────────────── */
 /* DATA                                         */
@@ -493,16 +527,18 @@ export default function Placements() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-primary text-center">
             {[
-              { value:"95%",     label:"Placement Rate",  icon:TrendingUp },
-              { value:"3000+",   label:"Students Placed", icon:Users      },
-              { value:"200+",    label:"Hiring Partners", icon:Building2  },
-              { value:"3.5 LPA", label:"Avg. Package",    icon:Briefcase  },
-            ].map((stat,i) => (
-              <motion.div key={i} initial={{ opacity:0, y:20 }}
-                whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
-                transition={{ delay:i*0.1 }} className="flex flex-col items-center">
+              { target: 95,   suffix: "%",     label: "Placement Rate",  icon: TrendingUp },
+              { target: 3000, suffix: "+",     label: "Students Placed", icon: Users      },
+              { target: 200,  suffix: "+",     label: "Hiring Partners", icon: Building2  },
+              { target: 3.5,  suffix: " LPA",  label: "Avg. Package",    icon: Briefcase  },
+            ].map((stat, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }} className="flex flex-col items-center">
                 <stat.icon size={24} className="mb-2 opacity-70" />
-                <span className="text-4xl md:text-5xl font-extrabold font-display">{stat.value}</span>
+                <span className="text-4xl md:text-5xl font-extrabold font-display">
+                  <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                </span>
                 <span className="font-semibold uppercase tracking-wider text-sm mt-1 opacity-80">{stat.label}</span>
               </motion.div>
             ))}
