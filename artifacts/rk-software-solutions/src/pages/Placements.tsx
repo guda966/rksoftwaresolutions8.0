@@ -58,26 +58,26 @@ interface Company {
 }
 
 const companies: Company[] = [
-  { name: "Tata Consultancy Services", short: "TCS",        brand: "#003087", sector: "IT Services",     domain: "tcs.com",          logo: "https://logo.clearbit.com/tcs.com" },
-  { name: "Infosys",                   short: "Infosys",    brand: "#007CC2", sector: "IT Services",     domain: "infosys.com",      logo: "https://logo.clearbit.com/infosys.com" },
-  { name: "Wipro",                     short: "Wipro",      brand: "#341062", sector: "IT & Consulting", domain: "wipro.com",        logo: "https://logo.clearbit.com/wipro.com" },
-  { name: "HCL Technologies",          short: "HCL",        brand: "#0074B7", sector: "Technology",      domain: "hcltech.com",      logo: "https://logo.clearbit.com/hcltech.com" },
-  { name: "Capgemini",                 short: "Capgemini",  brand: "#0070AD", sector: "Consulting",      domain: "capgemini.com",    logo: "https://logo.clearbit.com/capgemini.com" },
-  { name: "Tech Mahindra",             short: "Tech-M",     brand: "#C4122F", sector: "IT Services",     domain: "techmahindra.com", logo: "https://logo.clearbit.com/techmahindra.com" },
-  { name: "Cognizant",                 short: "Cognizant",  brand: "#1279BB", sector: "Technology",      domain: "cognizant.com",    logo: "https://logo.clearbit.com/cognizant.com" },
-  { name: "Accenture",                 short: "Accenture",  brand: "#A100FF", sector: "Consulting",      domain: "accenture.com",    logo: "https://logo.clearbit.com/accenture.com" },
-  { name: "IBM",                       short: "IBM",        brand: "#1F70C1", sector: "Enterprise IT",   domain: "ibm.com",          logo: "https://logo.clearbit.com/ibm.com" },
-  { name: "Oracle",                    short: "Oracle",     brand: "#F80000", sector: "Enterprise SW",   domain: "oracle.com",       logo: "https://logo.clearbit.com/oracle.com" },
-  { name: "Amazon",                    short: "Amazon",     brand: "#FF9900", sector: "E-Commerce",      domain: "amazon.com",       logo: "https://logo.clearbit.com/amazon.com" },
-  { name: "Microsoft",                 short: "Microsoft",  brand: "#00A4EF", sector: "Cloud & SW",      domain: "microsoft.com",    logo: "https://logo.clearbit.com/microsoft.com" },
-  { name: "Flipkart",                  short: "Flipkart",   brand: "#2874F0", sector: "E-Commerce",      domain: "flipkart.com",     logo: "https://logo.clearbit.com/flipkart.com" },
-  { name: "Deloitte",                  short: "Deloitte",   brand: "#86BC25", sector: "Consulting",      domain: "deloitte.com",     logo: "https://logo.clearbit.com/deloitte.com" },
-  { name: "Mphasis",                   short: "Mphasis",    brand: "#CC2233", sector: "IT Services",     domain: "mphasis.com",      logo: "https://logo.clearbit.com/mphasis.com" },
-  { name: "Hexaware",                  short: "Hexaware",   brand: "#E1261C", sector: "Technology",      domain: "hexaware.com",     logo: "https://logo.clearbit.com/hexaware.com" },
-  { name: "LTIMindtree",               short: "LTI",        brand: "#007DB8", sector: "IT Services",     domain: "ltimindtree.com",  logo: "https://logo.clearbit.com/ltimindtree.com" },
-  { name: "Paytm",                     short: "Paytm",      brand: "#00B9F1", sector: "FinTech",         domain: "paytm.com",        logo: "https://logo.clearbit.com/paytm.com" },
-  { name: "Zomato",                    short: "Zomato",     brand: "#E23744", sector: "Food Tech",       domain: "zomato.com",       logo: "https://logo.clearbit.com/zomato.com" },
-  { name: "Swiggy",                    short: "Swiggy",     brand: "#FC8019", sector: "Food Tech",       domain: "swiggy.com",       logo: "https://logo.clearbit.com/swiggy.com" },
+  { name: "Tata Consultancy Services", short: "TCS",        brand: "#003087", sector: "IT Services",     domain: "tcs.com",          logo: "https://www.google.com/s2/favicons?domain=tcs.com&sz=128" },
+  { name: "Infosys",                   short: "Infosys",    brand: "#007CC2", sector: "IT Services",     domain: "infosys.com",      logo: "https://www.google.com/s2/favicons?domain=infosys.com&sz=128" },
+  { name: "Wipro",                     short: "Wipro",      brand: "#341062", sector: "IT & Consulting", domain: "wipro.com",        logo: "https://www.google.com/s2/favicons?domain=wipro.com&sz=128" },
+  { name: "HCL Technologies",          short: "HCL",        brand: "#0074B7", sector: "Technology",      domain: "hcltech.com",      logo: "https://www.google.com/s2/favicons?domain=hcltech.com&sz=128" },
+  { name: "Capgemini",                 short: "Capgemini",  brand: "#0070AD", sector: "Consulting",      domain: "capgemini.com",    logo: "https://www.google.com/s2/favicons?domain=capgemini.com&sz=128" },
+  { name: "Tech Mahindra",             short: "Tech-M",     brand: "#C4122F", sector: "IT Services",     domain: "techmahindra.com", logo: "https://www.google.com/s2/favicons?domain=techmahindra.com&sz=128" },
+  { name: "Cognizant",                 short: "Cognizant",  brand: "#1279BB", sector: "Technology",      domain: "cognizant.com",    logo: "https://www.google.com/s2/favicons?domain=cognizant.com&sz=128" },
+  { name: "Accenture",                 short: "Accenture",  brand: "#A100FF", sector: "Consulting",      domain: "accenture.com",    logo: "https://www.google.com/s2/favicons?domain=accenture.com&sz=128" },
+  { name: "IBM",                       short: "IBM",        brand: "#1F70C1", sector: "Enterprise IT",   domain: "ibm.com",          logo: "https://www.google.com/s2/favicons?domain=ibm.com&sz=128" },
+  { name: "Oracle",                    short: "Oracle",     brand: "#F80000", sector: "Enterprise SW",   domain: "oracle.com",       logo: "https://www.google.com/s2/favicons?domain=oracle.com&sz=128" },
+  { name: "Amazon",                    short: "Amazon",     brand: "#FF9900", sector: "E-Commerce",      domain: "amazon.com",       logo: "https://www.google.com/s2/favicons?domain=amazon.com&sz=128" },
+  { name: "Microsoft",                 short: "Microsoft",  brand: "#00A4EF", sector: "Cloud & SW",      domain: "microsoft.com",    logo: "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128" },
+  { name: "Flipkart",                  short: "Flipkart",   brand: "#2874F0", sector: "E-Commerce",      domain: "flipkart.com",     logo: "https://www.google.com/s2/favicons?domain=flipkart.com&sz=128" },
+  { name: "Deloitte",                  short: "Deloitte",   brand: "#86BC25", sector: "Consulting",      domain: "deloitte.com",     logo: "https://www.google.com/s2/favicons?domain=deloitte.com&sz=128" },
+  { name: "Mphasis",                   short: "Mphasis",    brand: "#CC2233", sector: "IT Services",     domain: "mphasis.com",      logo: "https://www.google.com/s2/favicons?domain=mphasis.com&sz=128" },
+  { name: "Hexaware",                  short: "Hexaware",   brand: "#E1261C", sector: "Technology",      domain: "hexaware.com",     logo: "https://www.google.com/s2/favicons?domain=hexaware.com&sz=128" },
+  { name: "LTIMindtree",               short: "LTI",        brand: "#007DB8", sector: "IT Services",     domain: "ltimindtree.com",  logo: "https://www.google.com/s2/favicons?domain=ltimindtree.com&sz=128" },
+  { name: "Paytm",                     short: "Paytm",      brand: "#00B9F1", sector: "FinTech",         domain: "paytm.com",        logo: "https://www.google.com/s2/favicons?domain=paytm.com&sz=128" },
+  { name: "Zomato",                    short: "Zomato",     brand: "#E23744", sector: "Food Tech",       domain: "zomato.com",       logo: "https://www.google.com/s2/favicons?domain=zomato.com&sz=128" },
+  { name: "Swiggy",                    short: "Swiggy",     brand: "#FC8019", sector: "Food Tech",       domain: "swiggy.com",       logo: "https://www.google.com/s2/favicons?domain=swiggy.com&sz=128" },
 ];
 
 interface Testimonial {
@@ -339,12 +339,11 @@ function CompanyLogoTile({ company, delay = 0 }: { company: Company; delay?: num
               onLoad={() => setImgLoaded(true)}
               onError={() => setImgFailed(true)}
               className={`max-h-[44px] w-auto max-w-[120px] object-contain transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0 absolute"}`}
-              loading="lazy"
             />
           )}
           {(!imgLoaded || imgFailed) && (
             <span
-              className="font-display font-black text-2xl tracking-tight leading-none text-center select-none"
+              className="font-display font-black text-xl tracking-tight leading-none text-center select-none px-1"
               style={{ color: company.brand }}
             >
               {company.short}
