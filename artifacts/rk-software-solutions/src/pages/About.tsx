@@ -339,8 +339,8 @@ export default function About() {
 
       {/* ── CTA ── */}
       <section className="py-20 bg-primary relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/15 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
-        <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/15 rounded-full blur-3xl -translate-y-1/2 pointer-events-none hidden md:block" />
+        <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none hidden md:block" />
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">

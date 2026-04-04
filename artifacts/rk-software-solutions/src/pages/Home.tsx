@@ -209,9 +209,9 @@ export default function Home() {
           <img src={`${import.meta.env.BASE_URL}images/hero-bg.png`} alt="" className="w-full h-full object-cover" />
         </div>
 
-        {/* Animated blobs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse pointer-events-none z-10" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse pointer-events-none z-10" style={{ animationDelay: "1s" }} />
+        {/* Animated blobs — desktop only to avoid yellow bleed on mobile */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse pointer-events-none z-10 hidden md:block" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse pointer-events-none z-10 hidden md:block" style={{ animationDelay: "1s" }} />
 
         <div className="container mx-auto px-4 md:px-6 relative z-20 pt-10 pb-20">
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-10 xl:gap-16">
@@ -219,7 +219,7 @@ export default function Home() {
             {/* Left: Hero Text */}
             <div className="flex-1 min-w-0">
               <FadeIn direction="up">
-                <Badge className="bg-accent/20 text-accent border-accent/30 hover:bg-accent/30 text-sm mb-6 px-4 py-1.5 backdrop-blur-sm">
+                <Badge className="bg-accent/20 text-accent border-accent/30 hover:bg-accent/30 text-xs sm:text-sm mb-6 px-3 py-1 sm:px-4 sm:py-1.5 backdrop-blur-sm inline-flex w-auto">
                   ✦ WAY TO SUCCESS
                 </Badge>
               </FadeIn>
@@ -504,8 +504,8 @@ export default function Home() {
 
       {/* ── CTA Banner ── */}
       <section className="py-20 bg-primary relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/15 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
-        <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none hidden md:block" />
+        <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none hidden md:block" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <FadeIn>

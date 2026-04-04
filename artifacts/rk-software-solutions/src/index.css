@@ -277,10 +277,15 @@
     box-shadow: 0 0 0 1px rgba(245,197,24,0.08), 0 20px 40px -10px rgba(0,0,0,0.6) !important;
   }
 
-  /* All headings: navy → warm off-white with gold glow */
+  /* All headings: navy → warm off-white (no glow on mobile — causes blur) */
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
     color: hsl(45 40% 90%) !important;
-    text-shadow: 0 0 40px rgba(245, 197, 24, 0.12);
+  }
+
+  @media (min-width: 1024px) {
+    .dark h1, .dark h2 {
+      text-shadow: 0 0 40px rgba(245, 197, 24, 0.10);
+    }
   }
 
   /* Headings inside navy/accent sections stay white */
@@ -330,18 +335,20 @@
     border-color: hsl(231 20% 16%) !important;
   }
 
-  /* Gold ambient glow on body */
-  .dark body::before {
-    content: '';
-    position: fixed;
-    top: -20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 300px;
-    background: radial-gradient(ellipse, rgba(245,197,24,0.04) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+  /* Gold ambient glow on body — desktop only, causes issues on mobile */
+  @media (min-width: 1024px) {
+    .dark body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(245,197,24,0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
   }
 }
 
