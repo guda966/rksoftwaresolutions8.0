@@ -197,6 +197,14 @@ const steps = [
   { icon: Briefcase, step: "04", title: "Get Placed", desc: "Attend unlimited drives. Our team works until you land your dream offer." },
 ];
 
+const recentPlacements = [
+  { src: "placement_4.jpeg", alt: "Recent RK Software Solutions placement success 1" },
+  { src: "placement_5.jpeg", alt: "Recent RK Software Solutions placement success 2" },
+  { src: "placement_6.jpeg", alt: "Recent RK Software Solutions placement success 3" },
+  { src: "placement_7.jpeg", alt: "Recent RK Software Solutions placement success 4" },
+  { src: "placement_8.jpeg", alt: "Recent RK Software Solutions placement success 5" },
+];
+
 /* ─── Main Component ─────────────────────────────────── */
 export default function Home() {
   return (
@@ -344,6 +352,50 @@ export default function Home() {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Recent Placements Showcase ── */}
+      <section className="pb-20 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <FadeIn className="text-center mb-10">
+            <Badge className="bg-accent/15 text-accent border-accent/30 mb-4">Latest Success Stories</Badge>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">Recent Placements</h2>
+            <p className="text-muted-foreground text-base max-w-2xl mx-auto">
+              Fresh wins from our latest student placement journey, captured and celebrated at RK Software Solutions.
+            </p>
+          </FadeIn>
+
+          <div className="relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-br from-primary via-primary/95 to-primary/90 p-4 md:p-5 shadow-2xl shadow-primary/10">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-20 md:w-28 bg-gradient-to-r from-primary via-primary/85 to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-20 md:w-28 bg-gradient-to-l from-primary via-primary/85 to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
+
+            <div className="ticker-track flex gap-4 md:gap-5 w-max">
+              {[...recentPlacements, ...recentPlacements].map((item, index) => (
+                <div
+                  key={`${item.src}-${index}`}
+                  className="group relative w-[240px] sm:w-[280px] md:w-[340px] shrink-0 overflow-hidden rounded-3xl border border-white/12 bg-white/8 backdrop-blur-sm shadow-xl"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/${item.src}`}
+                    alt={item.alt}
+                    className="h-[280px] sm:h-[320px] md:h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/15 to-transparent" />
+                  <div className="absolute left-4 right-4 bottom-4 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-md">
+                    <p className="text-white text-sm font-semibold">RK Software Solutions Placement Drive</p>
+                    <p className="text-white/70 text-xs mt-1">Industry-ready training. Real placements. Proven results.</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <FadeIn delay={0.1} className="text-center mt-6">
+            <p className="text-xs text-muted-foreground">Hover over the gallery to pause and view each placement highlight.</p>
+          </FadeIn>
         </div>
       </section>
 
