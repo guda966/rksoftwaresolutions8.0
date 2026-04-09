@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rksoftwaresolutions.in/sitemap.xml
+Host: rksoftwaresolutions.in
